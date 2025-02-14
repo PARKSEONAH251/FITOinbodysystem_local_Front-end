@@ -46,9 +46,10 @@ export default function Login() {
         <img src="/image/MAIN_BACKIMAGE.png" alt="Background" className="MainImage"></img>
         <img src="/image/Vector9.png" alt="" className="MainImage_Vector"></img>
         <form onSubmit={handleSubmit}>
-        <div  className="USERLOGINID_EMAIL">
-          <labe>EMAIL</labe>
+        <div>
+          <labe className="USERLOGINID_EMAIL">EMAIL</labe>
           <input
+            className="INPUTTEXT1"
             type="text"
             value={userid}
             onChange={(e) => setUserId(e.target.value)}
@@ -58,6 +59,7 @@ export default function Login() {
         <div>
           <label className="USERLOGIN_PASSWORD">PASSWORD</label>
           <input
+            className="INPUTTEXT2"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
