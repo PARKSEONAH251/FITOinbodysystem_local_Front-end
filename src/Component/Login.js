@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../Style/login.css';
+
 
 export default function Login() {
   const [userid, setUserId] = useState("");
@@ -39,10 +41,13 @@ export default function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>User ID:</label>
+      <div className="Main_Container">
+        <h2 className="Main_Title"></h2>
+        <img src="/image/MAIN_BACKIMAGE.png" alt="Background" className="MainImage"></img>
+        <img src="/image/Vector9.png" alt="" className="MainImage_Vector"></img>
+        <form onSubmit={handleSubmit}>
+        <div  className="USERLOGINID_EMAIL">
+          <labe>EMAIL</labe>
           <input
             type="text"
             value={userid}
@@ -51,7 +56,7 @@ export default function Login() {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label className="USERLOGIN_PASSWORD">PASSWORD</label>
           <input
             type="password"
             value={password}
@@ -59,8 +64,9 @@ export default function Login() {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="LOGIN_BUTTON" type="submit">LOGIN</button>
       </form>
+      </div>
     </div>
   );
 }
