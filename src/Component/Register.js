@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../Style/legister.css';
 
 export default function Register() {
   const [userid, setUserId] = useState("");
@@ -35,11 +36,16 @@ export default function Register() {
 
   return (
     <div>
-      <h2>Register</h2>
+      <div className="Register_Container">
+      <img src="/image/RegisterImage.jpg" alt="Background" className="RegisterImage"></img>
+      <img src="/image/Vector9.png" alt="Backgroud" className="RegisterImage_Vector"></img>
+      
+      <h2 className="Register_Title"></h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>User ID:</label>
+          <labe className="UserRegister">ID: </labe>
           <input
+            className="input_text1"
             type="text"
             value={userid}
             onChange={(e) => setUserId(e.target.value)}
@@ -47,16 +53,20 @@ export default function Register() {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label className="userRegister_password">password</label>
           <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+            className="input_text2"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
-        <button type="submit">Register</button>
+        <button className="Register_Button" type="submit">Sign_up</button>
       </form>
+      </div>
+      
+
     </div>
   );
 }
