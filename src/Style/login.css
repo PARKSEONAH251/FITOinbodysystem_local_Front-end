@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'ThinkBold';
+    src: url('/public/font/ThinkBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ThinkRegular';
+    src: url('/public/font/ThinkRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.Main_Container{ 
+    position: relative;
+    display: inline-block;
+}
+
+.MainImage{
+    display: block;
+    width: 100%;
+}
+
+.MainImage_Vector{
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.Main_Title{
+    font-family: 'ThinkBold', sans-serif;
+    font-size: 45px;
+    font-weight: normal;
+    text-align: center;
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    z-index: 2;
+}
+
+.Main_Title::before {
+    width: 120%;
+    margin-left: -15px;
+    content: 'Welcome to'; /* 첫 번째 줄 텍스트 */
+    display: block; /* 줄 바꿈을 적용 */
+}
+
+.Main_Title::after {
+    content: 'FitEnd'; /* 'FitEnd'를 두 번째 줄로 표시 */
+    display: block; /* 줄 바꿈을 적용 */
+}
+
+.USERLOGINID_EMAIL{
+    font-family: 'Agdasima', sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    position: absolute;
+    /* top : 50%;
+    left: 50%; */
+    /* transform: translate(-340%, 430%); */
+    color: black;
+    z-index: 2;
+}
