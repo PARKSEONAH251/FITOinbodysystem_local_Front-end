@@ -91,11 +91,13 @@ form {
 }
 
 .USERLOGINID_EMAIL{
-    margin-right: 77%;
+    font-family: 'Agdasima', sans-serif;
+    margin-right: 87%;
 }
 
 .USERLOGIN_PASSWORD {
-    margin-right: 65%;
+    font-family: 'Agdasima', sans-serif;
+    margin-right: 75%;
 }
 
 .LOGIN_BUTTON{
