@@ -97,3 +97,13 @@ form {
 .USERLOGIN_PASSWORD {
     margin-right: 65%;
 }
+
+.LOGIN_BUTTON{
+    width: 107%;
+    height: 20%;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
