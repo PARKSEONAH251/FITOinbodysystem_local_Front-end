@@ -40,7 +40,7 @@ export default function Register() {
 
   return (
     <div className="Register_Container">
-      <div className="image-wrapper">
+      <div className="Main_image">
         <img src="/image/RegisterImage.jpg" alt="Background" className="RegisterImage" />
         <img src="/image/Vector9.png" alt="Overlay" className="RegisterImage_Vector" />
       </div>
@@ -48,7 +48,7 @@ export default function Register() {
       <h2 className="Register_Title">SIGN UP</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label className="UserRegister">NAME</label>
+          <label className="NAME">NAME</label>
           <input
             className="input_text"
             type="text"
@@ -58,7 +58,7 @@ export default function Register() {
           />
         </div>
         <div>
-          <label className="UserRegister">EMAIL</label>
+          <label className="EMAIL">EMAIL</label>
           <input
             className="input_text"
             type="email"
@@ -68,7 +68,7 @@ export default function Register() {
           />
         </div>
         <div>
-          <label className="UserRegister">SEXUAL SELECTION</label>
+          <label className="SEXUAL_SELECTION">SEXUAL SELECTION</label>
           <div className="gender-selection">
             <label>
               <input
@@ -93,7 +93,7 @@ export default function Register() {
           </div>
         </div>
         <div>
-          <label className="UserRegister">PASSWORD</label>
+          <label className="PASSWORD">PASSWORD</label>
           <input
             className="input_text"
             type="password"
@@ -103,7 +103,7 @@ export default function Register() {
           />
         </div>
         <div>
-          <label className="UserRegister">RESIDENCE</label>
+          <label className="RESIDENCE">RESIDENCE</label>
           <input
             className="input_text"
             type="text"
