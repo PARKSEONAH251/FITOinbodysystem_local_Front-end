@@ -67,6 +67,10 @@ export default function Login() {
             />
           </div>
           <button className="LOGIN_BUTTON" type="submit">LOGIN</button>
+          <lebel className="SIGNUP_BUTTON">
+            Don't have on accaut?
+            <button className="BUTTON">Sign_up</button>
+          </lebel>
       </form>
       </div>
     </div>

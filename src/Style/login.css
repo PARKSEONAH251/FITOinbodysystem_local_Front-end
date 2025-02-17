@@ -109,3 +109,8 @@ form {
     background-color: black;
     color: white;
 }
+
+.SIGNUP_BUTTON, .BUTTON{
+    font-family: 'Agdasima', sans-serif;
+    margin-top: 10px;
+}
