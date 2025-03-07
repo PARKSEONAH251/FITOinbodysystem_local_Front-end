@@ -1,29 +1,29 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function RecordBody() {
   const [userid, setuserid] = useState(sessionStorage.getItem("userid"));
-  const [height, setheight] = useState("");
-  const [weight, setweight] = useState("");
-  const [fatpercentage, setfatpercentage] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [fatpercentage, setFatPercentage] = useState("");
   const [bmi, setBmi] = useState(null);
   const [inbodyScore, setInbodyScore] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
-
     const userInfo = {
       userid,
-      height: parseInt(height),
-      weight: parseInt(weight),
+      height: parseFloat(height),
+      weight: parseFloat(weight),
       fatpercentage: parseFloat(fatpercentage),
     };
 
-    console.log("📌 보내는 데이터:", userInfo); // 디버깅용 로그 추가
+    console.log("📌 보내는 데이터:", userInfo);
 
     try {
-      const response = await fetch("http://localhost:8080/recoduserbody", {
+      const response = await fetch("http://localhost:8080/upload/recorduserbody", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,28 +31,35 @@ export default function RecordBody() {
         body: JSON.stringify(userInfo),
       });
 
-      const responseData = await response.json();
-      console.log("📌 서버 응답 데이터:", responseData); // 서버 응답 데이터 확인
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("📌 서버 응답 데이터:", responseData); // 서버 응답 데이터 확인
 
-      // 서버에서 받은 BMI, InBody Score를 상태 변수에 저장
-      setBmi(responseData.bmi);
-      setInbodyScore(responseData.inbodyScore);
+        setBmi(responseData.bmi);
+        setInbodyScore(responseData.inbodyScore);
 
+        alert("신체 정보가 저장되었습니다! 메인 페이지로 이동합니다.");
+        navigate("/main");
+      } else {
+        alert("신체 정보 저장 실패! 다시 시도해주세요.");
+      }
     } catch (error) {
+      alert("서버 오류 발생! 관리자에게 문의하세요.");
       console.error("Error:", error);
     }
   };
 
   return (
-  <div>
-    <h1>📊 Record Body</h1>
+    <div>
+      <h1>📊 Record Body</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>📏 Height (cm):</label>
           <input
             type="number"
+            step="0.1"
             value={height}
-            onChange={(e) => setheight(e.target.value)}
+            onChange={(e) => setHeight(e.target.value)}
             required
           />
         </div>
@@ -62,7 +69,7 @@ export default function RecordBody() {
             type="number"
             step="0.1"
             value={weight}
-            onChange={(e) => setweight(e.target.value)}
+            onChange={(e) => setWeight(e.target.value)}
             required
           />
         </div>
@@ -72,7 +79,7 @@ export default function RecordBody() {
             type="number"
             step="0.1"
             value={fatpercentage}
-            onChange={(e) => setfatpercentage(e.target.value)}
+            onChange={(e) => setFatPercentage(e.target.value)}
             required
           />
         </div>
@@ -87,7 +94,7 @@ export default function RecordBody() {
           <p><strong>⚖️ 몸무게:</strong> {weight} kg</p>
           <p><strong>📉 체지방률 :</strong> {fatpercentage} %</p>
           <p><strong>💪 BMI:</strong> {bmi.toFixed(2)}</p>
-          <p><strong>🔥 InBody Score:</strong> {inbodyScore.toFixed(2)}</p>  {/* InBody Score=(100−체지방률)+(몸무게×0.1)*/}
+          <p><strong>🔥 InBody Score:</strong> {inbodyScore.toFixed(2)}</p>
         </div>
       )}
     </div>
