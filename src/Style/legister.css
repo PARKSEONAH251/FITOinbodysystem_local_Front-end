@@ -17,10 +17,14 @@
     margin: 50px auto;
     background: transparent;
     padding: 20px;
-    margin-top: 200px;
+    margin-top: 150px;
     overflow: hidden;
     border-radius: 10px;
   }
+
+.Main_container{
+  height: 700px;
+}
 
 .Main_image {
     position: absolute;
@@ -44,25 +48,27 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 13%;
+    top: 15%;
     left: 0;
     object-fit: cover;
     z-index: 2;
   }
-
+  .form{
+    margin-bottom: 30px;
+  }
   .Register_Title{
     font-family: 'ThinkBold', sans-serif;
     font-size: 50px;
     text-align: left;
+    margin-bottom: 10px;
     align-self: flex-start;
-    margin-bottom: 0px;
-    margin-top: 30%;
     z-index: 3;
   }
 
   .input_text {
     font-family: 'Agdasima', sans-serif;
     width: 100%;
+    height: 10px;
     padding: 10px;
     /* margin: 5px 0 15px; */
     border: none;
@@ -78,13 +84,13 @@
 
   .NAME, .EMAIL,
   .SEXUAL_SELECTION,
-  .PASSWORD, .RESIDENCE{
+  .PASSWORD, .PROVINCE, .CITY, .BIRTH{
     font-family: 'Agdasima', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     color: black;
     display: block;
     text-align: left; 
-    margin-top: 25px;
+    margin-top: 10px;
   }
 
   .gender-selection {
@@ -99,9 +105,21 @@
     margin-right: 15px;
   }
 
-  .Register_Button {
+  .CITY_Button {
     font-family: 'Agdasima', sans-serif;
-    font-size: 20px;
+    font-size: 12px; /* Adjusted to match the login button size */
+    width: 65px;
+    height: 25px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
+
+.Register_Button {
+    font-family: 'Agdasima', sans-serif;
+    font-size: 20px; /* Adjusted to match login button size */
     width: 107%;
     height: 10%;
     margin-top: 30px;
@@ -109,4 +127,9 @@
     border-radius: 10px;
     background-color: black;
     color: white;
-  }
+}
+
+.SIGNUP_BUTTON, .BUTTON {
+  font-family: 'Agdasima', sans-serif;
+  margin-top: 10px;
+}
