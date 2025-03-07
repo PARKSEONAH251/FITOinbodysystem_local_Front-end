@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../Style/login.css';
 
-
 export default function Login() {
   const [userid, setUserId] = useState("");
   const [password, setPassword] = useState("");
@@ -29,25 +28,29 @@ export default function Login() {
         console.log("Login successful");
         sessionStorage.setItem("userid", userid);
         navigate("/main");
-        // 성공 시 추가적인 로직 (예: 리다이렉트)
+        // Success logic (e.g., redirect)
       } else {
         console.error("Invalid credentials");
-        // 실패 시 추가적인 로직
+        // Failure logic
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
+  const handleSignUpClick = () => {
+    navigate('/register');
+  };
+
   return (
     <div>
       <div className="Main_Container">
         <h2 className="Main_Title"></h2>
-        <img src="/image/MAIN_BACKIMAGE.png" alt="Background" className="MainImage"></img>
-        <img src="/image/Vector9.png" alt="" className="MainImage_Vector"></img>
+        <img src="/image/MAIN_BACKIMAGE.png" alt="Background" className="MainImage" />
+        <img src="/image/Vector9.png" alt="" className="MainImage_Vector" />
         <form onSubmit={handleSubmit}>
           <div>
-            <labe className="USERLOGINID_EMAIL">EMAIL</labe>
+            <label className="USERLOGINID_EMAIL">EMAIL</label>
             <input
               className="INPUTTEXT1"
               type="text"
@@ -67,11 +70,11 @@ export default function Login() {
             />
           </div>
           <button className="LOGIN_BUTTON" type="submit">LOGIN</button>
-          <lebel className="SIGNUP_BUTTON">
-            Don't have on accaut?
-            <button className="BUTTON">Sign_up</button>
-          </lebel>
-      </form>
+          <label className="SIGNUP_BUTTON">
+            Don't have an account?
+            <button className="BUTTON" onClick={handleSignUpClick}>Sign_up</button>
+          </label>
+        </form>
       </div>
     </div>
   );
