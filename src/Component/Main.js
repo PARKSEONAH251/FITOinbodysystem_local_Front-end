@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import config from "../config";
 
 export default function Main() {
   const userid = sessionStorage.getItem("userid");
@@ -28,7 +29,6 @@ export default function Main() {
       return;
     }
 
-    // eslint-disable-next-line no-undef
     fetch(`${config.SERVER_URL}/download/recentuserbody/${userid}`)
       .then((response) => response.json())
       .then((data) => {
