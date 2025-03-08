@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 훅
-import '../Style/legister.css';
-
+import "../Style/legister.css"
 export default function Register() {
   const navigate = useNavigate(); // 페이지이동 userNavigate()
 
   const [isKakaoLoaded, setIsKakaoLoaded] = useState(false);
   const [isPostcodeLoaded, setIsPostcodeLoaded] = useState(false);
-  
+
   const [userInfo, setUserInfo] = useState({
     userid: "",
     password: "",
@@ -18,13 +17,12 @@ export default function Register() {
     birth: "",
   });
 
-  // 현재 날짜 기준으로 최소 1년 전 날짜 계산 (오늘 날짜나 미래 날짜 선택시 데이터베이스에 부적절한 값이 적용됨됨)
+  // 현재 날짜 기준으로 최소 1년 전 날짜 계산 (오늘 날짜나 미래 날짜 선택시 데이터베이스에 부적절한 값이 적용됨)
   const minBirthDate = new Date();
   minBirthDate.setFullYear(minBirthDate.getFullYear() - 100); // 최대 100년 전까지 입력 가능
   const maxBirthDate = new Date();
   maxBirthDate.setFullYear(maxBirthDate.getFullYear() - 1); // 최소 1살부터 가입 가능
 
-  // eslint-disable-next-line no-undef
   useEffect(() => {
     const kakaoApiKey = process.env.REACT_APP_KAKAO_API_KEY;
     if (!kakaoApiKey) {
@@ -70,13 +68,17 @@ export default function Register() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/upload/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userInfo),
-      });
+      const response = await fetch(
+        // eslint-disable-next-line no-undef
+        `${config.SERVER_URL}/upload/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        }
+      );
 
       if (response.ok) {
         alert("회원가입이 성공적으로 완료되었습니다.");
@@ -85,7 +87,6 @@ export default function Register() {
       } else {
         alert("회원가입 실패! 입력한 정보를 다시 확인해주세요.");
         console.error("Failed to register user");
-        // 실패 시 추가적인 로직
       }
     } catch (error) {
       alert("관리자에게 문의해주세요.");
@@ -112,31 +113,43 @@ export default function Register() {
   };
 
   return (
-    <div className="Register_Container">
+      <div className="Register_Container">
       <div className="Main_container">
         <div className="Main_image">
           <img src="/image/RegisterImage.jpg" alt="Background" className="RegisterImage" />
           <img src="/image/Vector9.png" alt="Overlay" className="RegisterImage_Vector" />
         </div>
       </div>
-
       <h2 className="Register_Title">SIGN UP</h2>
       <form className="form" onSubmit={handleSubmit}>
         <div>
-          <label className="NAME">NAME</label>
+          <label className="USERID">UserId:</label>
           <input
             className="input_text"
             type="text"
+            name="userid"
             value={userInfo.userid}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label className="EMAIL">EMAIL</label>
+          <label className="PASSWORD">Password:</label>
+          <input
+            className="input_text"
+            type="password"
+            name="password"
+            value={userInfo.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label className="EMAIL">Email:</label>
           <input
             className="input_text"
             type="email"
+            name="email"
             value={userInfo.email}
             onChange={handleChange}
             required
@@ -148,74 +161,53 @@ export default function Register() {
             <label>
               <input
                 type="radio"
-                name="gender"
-                value="male"
+                name="sex"
+                value="1"
                 checked={userInfo.sex === "1"}
                 onChange={handleChange}
                 required
               />
-              남
+              남자
             </label>
             <label>
               <input
                 type="radio"
-                name="gender"
-                value="female"
+                name="sex"
+                value="2"
                 checked={userInfo.sex === "2"}
                 onChange={handleChange}
                 required
               />
-              여
+              여자
             </label>
           </div>
         </div>
         <div>
-          <label className="PASSWORD">PASSWORD</label>
+          <label className="PROVINCE">Province:</label>
+          <input className="input_text" type="text" name="region1" value={userInfo.region1} readOnly />
+        </div>
+        <div>
+          <label className="CITY">City:
+          <button className="CITY_Button" type="button" onClick={handleAddressSearch}>
+            주소 검색
+          </button>
+          </label>
+          <input className="input_text" type="text" name="region2" value={userInfo.region2} readOnly />
+        </div>
+        <div>
+          <label className="BIRTH">Birth:</label>
           <input
             className="input_text"
-            type="password"
-            value={userInfo.password}
+            type="date"
+            name="birth"
+            value={userInfo.birth}
             onChange={handleChange}
+            min={minBirthDate.toISOString().split("T")[0]} // 최대 100년 전까지 입력 가능
+            max={maxBirthDate.toISOString().split("T")[0]} // 최소 1살부터 가입 가능
             required
           />
         </div>
-        <div>
-          <label className="PROVINCE">PROVINCE</label>
-          <input
-            className="input_text"
-            type="text"
-            name="region1"
-            value={userInfo.region1}
-            readOnly
-          />
-        </div>
-        <div>
-          <label className="CITY">
-            CITY
-            <button className="CITY_Button" type="button" onClick={handleAddressSearch}>주소 검색</button>
-          </label>
-          <input 
-            className="input_text"
-            type="text" 
-            name="region2" 
-            value={userInfo.region2} 
-            readOnly 
-          />
-          <div>
-            <label className="BIRTH">BIRTH</label>
-            <input
-              className="input_text"
-              type="date"
-              name="birth"
-              value={userInfo.birth}
-              onChange={handleChange}
-              min={minBirthDate.toISOString().split("T")[0]} // 최대 100년 전까지 입력 가능
-              max={maxBirthDate.toISOString().split("T")[0]} // 최소 1살부터 가입 가능
-              required
-            />
-        </div>  
-        </div>
-        <button className="Register_Button" type="submit">SIGN UP</button>
+        <button className="Register_Button" type="submit">회원가입</button>
       </form>
     </div>
   );

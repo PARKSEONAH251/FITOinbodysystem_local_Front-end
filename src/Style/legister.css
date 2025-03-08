@@ -82,7 +82,7 @@
     color: rgba(0, 0, 0, 0.5);
   }
 
-  .NAME, .EMAIL,
+  .USERID, .EMAIL,
   .SEXUAL_SELECTION,
   .PASSWORD, .PROVINCE, .CITY, .BIRTH{
     font-family: 'Agdasima', sans-serif;
