@@ -1,20 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Component/Login";
 import Main from "./Component/Main";
-import Graph from "./Component/Graph";
 import RecordBody from "./Component/RecordBody";
-
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/graph" element={<Graph />} />
-        <Route path="/" element={<Login />} />
-        <Route path="/recordbody" element={<RecordBody />} />
-      </Routes>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/main" component={Main} />
+        <Route path="/" exact component={Login} />
+        <Route path="/recodbody" exact component={RecordBody} />
+      </Switch>
     </Router>
   );
 }
