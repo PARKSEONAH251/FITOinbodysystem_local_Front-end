@@ -1,0 +1,79 @@
+.Main_Container {
+  position: relative; /* Parents needs relative positioning */
+  width: 360px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px auto;
+  background: transparent;
+  padding: 20px;
+  margin-top: 200px;
+  overflow: visible; /* Allow scrollable content */
+  border-radius: 10px;
+}
+  
+.MainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+}
+
+.maintitle {
+  position: relative;  
+  z-index: 1;         
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+  
+.anime_container{
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  touch-action: none;
+}
+
+.slide{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.slide img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.anime_controls {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.prev,
+.next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+

@@ -39,7 +39,7 @@ export default function RecordBody() {
         setInbodyScore(responseData.inbodyScore);
 
         alert("신체 정보가 저장되었습니다! 메인 페이지로 이동합니다.");
-        navigate("/main");
+        navigate("/graph");
       } else {
         alert("신체 정보 저장 실패! 다시 시도해주세요.");
       }
