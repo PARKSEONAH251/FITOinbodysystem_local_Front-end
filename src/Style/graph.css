@@ -1,0 +1,16 @@
+.Graph_Container{
+  position: relative; /* Parents needs relative positioning */
+  width: 360px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px auto;
+  background: transparent;
+  padding: 20px;
+  margin-top: 200px;
+  overflow: visible; /* Allow scrollable content */
+  border-radius: 10px;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
 
+import "../Style/graph.css";
 export default function Graph() {
   const userid = sessionStorage.getItem("userid");
   const navigate = useNavigate();
@@ -60,28 +61,31 @@ export default function Graph() {
     <div>
       {userid ? (
         <>
-          <h2>Main Screen</h2>
-          <p>Welcome to the main screen!</p>
-          <p>Logged in as: {userid}</p>
+          <div className="Graph_Container">
+            <h2>Main Screen</h2>
+            <p>Welcome to the main screen!</p>
+            <p>{userid}</p>
 
-          <div>
-            <h2>📊 InBody 결과</h2>
-            <p>
-              <strong>📏 키:</strong> {bodyrecod[0].height} cm
-            </p>
-            <p>
-              <strong>⚖️ 몸무게:</strong> {bodyrecod[0].weight} kg
-            </p>
-            <p>
-              <strong>📉 체지방률:</strong> {bodyrecod[0].fatpercentage} %
-            </p>
-            <p>
-              <strong>💪 BMI:</strong> {bodyrecod[0].bmi}
-            </p>
-            <p>
-              <strong>🔥 InBody Score:</strong> {bodyrecod[0].inbodyScore}
-            </p>
+            <div>
+              <h2>📊 InBody 결과</h2>
+              <p>
+                <strong>📏 키:</strong> {bodyrecod[0].height} cm
+              </p>
+              <p>
+                <strong>⚖️ 몸무게:</strong> {bodyrecod[0].weight} kg
+              </p>
+              <p>
+                <strong>📉 체지방률:</strong> {bodyrecod[0].fatpercentage} %
+              </p>
+              <p>
+                <strong>💪 BMI:</strong> {bodyrecod[0].bmi}
+              </p>
+              <p>
+                <strong>🔥 InBody Score:</strong> {bodyrecod[0].inbodyScore}
+              </p>
+            </div>
           </div>
+          
 
           <button onClick={navigateToRank} style={{ marginLeft: "10px" }}>
             점수 랭킹 보기
