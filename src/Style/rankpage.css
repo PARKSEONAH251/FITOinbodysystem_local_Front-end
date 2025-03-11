@@ -1,0 +1,166 @@
+.Main_Container {
+    width: 360px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: black;
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    justify-content: flex-start;
+  }
+  
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 50px;
+  }
+  
+  .maintitle {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 3px solid #C9F439;
+    padding-bottom: 5px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .gender-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .gender-btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .gender-btn.active {
+    background: #C9F439;
+    color: black;
+  }
+  
+  .top-rank-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 50px; /* 요소 간 간격 */
+  margin: 20px 0;
+  height: 120px;
+}
+
+.rank-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 1등 - 중앙 */
+.rank-1 {
+  transform: scale(1.7);
+  order: 2; /* 가운데 배치 */
+  margin-bottom: 20px;
+}
+
+/* 2등 - 왼쪽 */
+.rank-2 {
+  transform: scale(1.2);
+  order: 1; /* 왼쪽 배치 */
+}
+
+/* 3등 - 오른쪽 */
+.rank-3 {
+  transform: scale(1.2);
+  order: 3; /* 오른쪽 배치 */
+}
+  
+  
+  .profile-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: gray;
+  }
+  
+  .rank-name {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .ranking-list {
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ranking-item {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    padding: 8px;
+    border-bottom: 1px solid white;
+    justify-content: space-between;
+  }
+  
+  .profile-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  .user-id {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  .user-score{
+    text-align: right;
+    margin-right: 10px;
+  }
+  
+  .rank-position {
+    font-weight: bold;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    bottom: 20px;
+  }
+  
+  .button-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .buttonimage {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .button-item span {
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  
