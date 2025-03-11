@@ -8,17 +8,19 @@ export default function Graph() {
   const navigate = useNavigate();
   const [bodyrecod, setBodyRecod] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  const navigateMain = () => {
+    navigate("/main");
+  }
 
   const navigateToRecordBody = () => {
-    navigate("/recordbody");
+    navigate("/recodbody");
   };
 
-  const navigateToRank = () => {
-    navigate("/rank");
-  };
-  const navigateToTodo = () => {
-    navigate("/todo");
-  };
+  const navigateGraph = () => {
+    navigate("/Graph")
+  }
+
   const handleLogout = () => {
     sessionStorage.removeItem("userid"); // 로그아웃 시 사용자 정보 삭제
     navigate("/login"); // 로그인 페이지로 이동
@@ -62,12 +64,16 @@ export default function Graph() {
       {userid ? (
         <>
           <div className="Graph_Container">
-            <h2>Main Screen</h2>
-            <p>Welcome to the main screen!</p>
-            <p>{userid}</p>
-
+          <img src="/image/black.png" alt="Background" className="MainImage" />
+            <div className="Graph_harder"> 
+              <p>Welcome to Your Information</p>
+              <p>{userid}</p>
+            </div>
+            <div className="Inbodyscore_div">
+              <p className="inbodyscore">{bodyrecod[0].inbodyScore}</p>
+              <p className="inbodyscore_text"> Your InBody Score:</p>
+            </div>
             <div>
-              <h2>📊 InBody 결과</h2>
               <p>
                 <strong>📏 키:</strong> {bodyrecod[0].height} cm
               </p>
@@ -80,22 +86,36 @@ export default function Graph() {
               <p>
                 <strong>💪 BMI:</strong> {bodyrecod[0].bmi}
               </p>
-              <p>
-                <strong>🔥 InBody Score:</strong> {bodyrecod[0].inbodyScore}
-              </p>
+              
+            </div>
+            <div className="button-container">
+              <div  onClick={navigateMain} className="button-item">
+                <img src="/image/HOME.png" alt="Main" className="buttonimage" />
+                <span className="span">Main</span> {/* 이미지 아래에 텍스트 추가 */}
+              </div>
+
+              <div className="button-item">
+                <img src="/image/PAPAR.png" alt="Paper" className="buttonimage" onClick={navigateToRecordBody} />
+                <span className="span">Paper</span> {/* 이미지 아래에 텍스트 추가 */}
+              </div>
+
+              <div className="button-item">
+                <img src="/image/Vector7.png" alt="Graph" className="buttonimage" onClick={navigateGraph} />
+                <span className="span">Graph</span> {/* 이미지 아래에 텍스트 추가 */}
+              </div>
+
+              <div className="button-item">
+                <img src="/image/Vector8.png" alt="Food" className="buttonimage" />
+                <span className="span">Food</span> {/* 이미지 아래에 텍스트 추가 */}
+              </div>
+
+              <div className="button-item">
+                <img src="/image/PEOPLE.png" alt="Logout" className="buttonimage" onClick={handleLogout} />
+                <span className="span">Logout</span> {/* 이미지 아래에 텍스트 추가 */}
+              </div>
             </div>
           </div>
           
-
-          <button onClick={navigateToRank} style={{ marginLeft: "10px" }}>
-            점수 랭킹 보기
-          </button>
-
-          <button onClick={navigateToRecordBody}>신체 정보 입력</button>
-          <button onClick={navigateToTodo}>음식 다이어리</button>
-          <button onClick={handleLogout} style={{ marginLeft: "10px" }}>
-            로그아웃
-          </button>
         </>
       ) : (
         <p>잘못된 접근</p>

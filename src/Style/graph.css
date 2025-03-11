@@ -14,3 +14,37 @@
   overflow: visible; /* Allow scrollable content */
   border-radius: 10px;
 }
+
+.Graph_harder{
+  position: relative;
+  font-size: 20px;
+  text-align: right;
+  color: white;
+  padding-bottom: 5px;  /* 텍스트와 밑줄 사이 간격 설정 */
+  border-bottom: 1px solid #8E8E8E; /* 밑줄 색상과 두께 설정 */
+}
+.Graph_harder p {
+  margin-bottom: 10px; 
+}
+
+.Graph_harder p:first-of-type {
+  margin-bottom: 5px;
+}
+
+.Graph_harder p:last-of-type {
+  margin-top: 5px; 
+}
+
+.Inbodyscore_div{
+  margin-left: 110px;
+  color: white;
+}
+.inbodyscore {
+  margin-left: 60px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.inbodyscore_text {
+  margin-top: 5px;
+}

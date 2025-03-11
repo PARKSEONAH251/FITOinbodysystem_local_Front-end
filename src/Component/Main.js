@@ -29,10 +29,6 @@ export default function Main() {
     navigate("/Graph")
   }
 
-  const navigateToRank = () => {
-    navigate("/rank");
-  };
-
   const handleLogout = () => {
     sessionStorage.removeItem("userid"); // 로그아웃 시 사용자 정보 삭제
     navigate("/login"); // 로그인 페이지로 이동
