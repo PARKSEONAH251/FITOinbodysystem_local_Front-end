@@ -8,6 +8,8 @@ import Login from "./Component/Login";
 import Main from "./Component/Main"; // 메인 화면 컴포넌트
 import RecordBody from "./Component/RecordBody";
 import Graph from "./Component/Graph";
+import Foodlist from "./Component/FoodList";
+import FoodDetail from "./Component/FoodDetail";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +22,8 @@ root.render(
         <Route path="/" element={<Login />} />
         <Route path="/recodbody" element={<RecordBody />} />
         <Route path="/Graph" element={<Graph />} />
+        <Route path="/FoodList" element={<Foodlist />} />
+        <Route path="/FoodDetail" element={<FoodDetail/>} />
       </Routes>
     </Router>
   </React.StrictMode>

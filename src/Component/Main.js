@@ -29,6 +29,10 @@ export default function Main() {
     navigate("/Graph")
   }
 
+const navigateFood = ()=>{
+  navigate("/FoodList")
+}
+
   const handleLogout = () => {
     sessionStorage.removeItem("userid"); // 로그아웃 시 사용자 정보 삭제
     navigate("/login"); // 로그인 페이지로 이동
@@ -105,31 +109,31 @@ export default function Main() {
           <img src="/image/IMAGE3.png" alt="Background" className="optionImage" />
         </div>
         <div className="button-container">
-        <div className="button-item">
-          <img src="/image/HOME.png" alt="Main" className="buttonimage" onClick={navigateMain} />
-          <span className="span">Main</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+          <div className="button-item">
+            <img src="/image/HOME.png" alt="Main" className="buttonimage" onClick={navigateMain} />
+            <span className="span">Main</span> {/* 이미지 아래에 텍스트 추가 */}
+          </div>
 
-        <div className="button-item">
-          <img src="/image/PAPAR.png" alt="Paper" className="buttonimage" onClick={navigateToRecordBody} />
-          <span className="span">Paper</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+          <div className="button-item">
+            <img src="/image/PAPAR.png" alt="Paper" className="buttonimage" onClick={navigateToRecordBody} />
+            <span className="span">Paper</span> {/* 이미지 아래에 텍스트 추가 */}
+          </div>
 
-        <div className="button-item">
-          <img src="/image/Vector7.png" alt="Graph" className="buttonimage" onClick={navigateGraph} />
-          <span className="span">Graph</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+          <div className="button-item">
+            <img src="/image/Vector7.png" alt="Graph" className="buttonimage" onClick={navigateGraph} />
+            <span className="span">Graph</span> {/* 이미지 아래에 텍스트 추가 */}
+          </div>
 
-        <div className="button-item">
-          <img src="/image/Vector8.png" alt="Food" className="buttonimage" />
-          <span className="span">Food</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+          <div className="button-item">
+            <img src="/image/Vector8.png" alt="Food" className="buttonimage" onClick={navigateFood}/>
+            <span className="span">Food</span> {/* 이미지 아래에 텍스트 추가 */}
+          </div>
 
-        <div className="button-item">
-          <img src="/image/PEOPLE.png" alt="Logout" className="buttonimage" onClick={handleLogout} />
-          <span className="span">Logout</span> {/* 이미지 아래에 텍스트 추가 */}
+          <div className="button-item">
+            <img src="/image/PEOPLE.png" alt="Logout" className="buttonimage" onClick={handleLogout} />
+            <span className="span">Logout</span> {/* 이미지 아래에 텍스트 추가 */}
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </div>      
