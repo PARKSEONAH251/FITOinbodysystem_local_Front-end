@@ -28,13 +28,20 @@
 .maintitle {
   font-family: 'ThinkBold', sans-serif;
   font-size: 50px;
-  position: relative;  
+  position: absolute;  /* 고정된 위치로 설정 */
+  top: 30px;       /* 상단에서 230px 아래로 위치 */
+  left: 50%;        /* 화면 가로 중앙에 배치 */
+  transform: translateX(-50%); /* 정확한 중앙 정렬을 위한 오프셋 */
   z-index: 1;         
   color: white;
   padding-bottom: 5px;  /* 텍스트와 밑줄 사이 간격 설정 */
   border-bottom: 4px solid #C9F439; /* 밑줄 색상과 두께 설정 */
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.Central-Menu{
+  margin-top: 75px;
 }
   
 .anime_container{
@@ -89,36 +96,36 @@
   margin-right: 0px;
 }
 
-/* 버튼과 이미지를 세로로 정렬 */
-.button-container {
+.Button-Container {
   display: flex;
-  justify-content: space-between;  /* 버튼들 사이에 일정한 간격을 두기 */
-  padding: 20px;
+  justify-content: space-evenly;  /* 버튼들 간의 간격을 일정하게 나누기 */
+  width: 100%;
+  position: absolute;  /* 화면 중앙에 고정 */
+  top: 93%;             /* 화면 세로 중앙에 위치 */
+  left: 50%;            /* 화면 가로 중앙에 위치 */
+  transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위한 보정 */
 }
 
-.button-item {
+.Button-Item {
   display: flex;
-  flex-direction: column;  /* 세로로 정렬 */
-  align-items: center;     /* 중앙 정렬 */
+  flex-direction: column;
+  align-items: center;   /* 아이콘과 텍스트를 세로로 정렬 */
+  margin: 10px;
 }
 
-.buttonimage {
-  width: 30px;         /* 이미지 크기 설정 */
-  height: 30px;        /* 이미지 크기 설정 */
-  cursor: pointer;     /* 이미지에 마우스를 올리면 클릭 가능한 커서 표시 */
+.ButtonImage {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
-.span {
-  font-size: 10px;      /* 텍스트 크기 설정 */
-  color: white;         /* 텍스트 색상 */
-  text-align: center;   /* 텍스트 중앙 정렬 */
-  margin-top: 5px;      /* 이미지와 텍스트 사이의 간격 */
-  z-index: 2;           /* 텍스트가 이미지 위로 올라오도록 설정 */
-}
-.buttonimage:hover {
-  opacity: 0.7;  /* 이미지에 마우스를 올렸을 때 약간 투명하게 만들어 클릭감을 추가 */
+.Span {
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  margin-top: 5px;
 }
 
-
-
-
+.ButtonImage:hover {
+  opacity: 0.7;
+}

@@ -86,52 +86,52 @@ export default function Main() {
   ];
 
   return (
-    <div>
       <div className="Main_Container">
         <a className="maintitle">FitEnd</a>
         <img src="/image/black.png" alt="Background" className="MainImage" />
-        <div className="anime_container" {...swipeHandlers}>
-          <animated.div style={animation} className="slide">
-            <img src={images[currentIndex]} alt="carousel" />
-          </animated.div>
+        <div className="Central-Menu">
+          <div className="anime_container" {...swipeHandlers}>
+            <animated.div style={animation} className="slide">
+              <img src={images[currentIndex]} alt="carousel" />
+            </animated.div>
 
-          <div className="anime_controls">
-            <button className="prev" onClick={goToPrevious}>⟨‹</button>
-            <button className="next" onClick={goToNext}>›⟩</button>
+            <div className="anime_controls">
+              <button className="prev" onClick={goToPrevious}>⟨‹</button>
+              <button className="next" onClick={goToNext}>›⟩</button>
+            </div>
+          <div className="전체이미지지">
+            <img src="/image/IMAGE1.png" alt="Background" className="optionImage" />
+            <img src="/image/IMAGE2.png" alt="Background" className="optionImage" />
+            <img src="/image/IMAGE3.png" alt="Background" className="optionImage" />
           </div>
-        <div>
-          <img src="/image/IMAGE1.png" alt="Background" className="optionImage" />
-          <img src="/image/IMAGE2.png" alt="Background" className="optionImage" />
-          <img src="/image/IMAGE3.png" alt="Background" className="optionImage" />
         </div>
-        <div className="button-container">
-        <div className="button-item">
-          <img src="/image/HOME.png" alt="Main" className="buttonimage" onClick={navigateMain} />
-          <span className="span">Main</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+        <div className="Button-Container">
+          <div onClick={navigateMain} className="Button-Item">
+            <img src="/image/HOME.png" alt="Main" className="ButtonImage" />
+            <span className="Span">Main</span>
+          </div>
 
-        <div className="button-item">
-          <img src="/image/PAPAR.png" alt="Paper" className="buttonimage" onClick={navigateToRecordBody} />
-          <span className="span">Paper</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+          <div className="Button-Item">
+            <img src="/image/PAPAR.png" alt="Paper" className="ButtonImage" onClick={navigateToRecordBody} />
+            <span className="Span">Paper</span>
+          </div>
 
-        <div className="button-item">
-          <img src="/image/Vector7.png" alt="Graph" className="buttonimage" onClick={navigateGraph} />
-          <span className="span">Graph</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+          <div className="Button-Item">
+            <img src="/image/Vector7.png" alt="rank" className="ButtonImage" onClick={navigateGraph} />
+            <span className="Span">Graph</span>
+          </div>
 
-        <div className="button-item">
-          <img src="/image/Vector8.png" alt="Food" className="buttonimage" />
-          <span className="span">Food</span> {/* 이미지 아래에 텍스트 추가 */}
-        </div>
+          <div className="Button-Item">
+            <img src="/image/Vector8.png" alt="Food" className="ButtonImage" />
+            <span className="Span">Food</span>
+          </div>
 
-        <div className="button-item">
-          <img src="/image/PEOPLE.png" alt="Logout" className="buttonimage" onClick={handleLogout} />
-          <span className="span">Logout</span> {/* 이미지 아래에 텍스트 추가 */}
+          <div className="Button-Item">
+            <img src="/image/PEOPLE.png" alt="Logout" className="ButtonImage" onClick={handleLogout} />
+            <span className="Span">Logout</span>
+          </div>
         </div>
-      </div>
       </div>
     </div>
-  </div>      
   );
 }

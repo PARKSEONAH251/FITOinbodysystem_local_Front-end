@@ -15,6 +15,21 @@
   border-radius: 10px;
 }
 
+.GraphTitle {
+  font-family: 'ThinkBold', sans-serif;
+  font-size: 50px;
+  position: absolute;  /* 고정된 위치로 설정 */
+  top: 30px;       /* 상단에서 100px 아래로 위치 */
+  left: 50%;        /* 화면 가로 중앙에 배치 */
+  transform: translateX(-50%); /* 정확한 중앙 정렬을 위한 오프셋 */
+  z-index: 1;         
+  color: white;
+  padding-bottom: 5px;  /* 텍스트와 밑줄 사이 간격 설정 */
+  border-bottom: 4px solid #C9F439; /* 밑줄 색상과 두께 설정 */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .Graph_harder{
   position: relative;
   font-size: 20px;
@@ -23,6 +38,7 @@
   padding-bottom: 5px;  /* 텍스트와 밑줄 사이 간격 설정 */
   border-bottom: 1px solid #8E8E8E; /* 밑줄 색상과 두께 설정 */
 }
+
 .Graph_harder p {
   margin-bottom: 10px; 
 }
@@ -36,15 +52,179 @@
 }
 
 .Inbodyscore_div{
-  margin-left: 110px;
   color: white;
 }
+
 .inbodyscore {
-  margin-left: 60px;
+  font-family: 'ThinkBold', sans-serif;
+  font-size: 50px;
+  color: #C9F439;
+  margin-left: 140px;
   margin-top: 10px;
   margin-bottom: 5px;
 }
 
 .inbodyscore_text {
   margin-top: 5px;
+  margin-right: 120px;
 }
+
+.graphtext {
+  margin-right: 220px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;  /* 세로로 정렬 */
+  align-items: center;  /* 아이콘과 텍스트를 중앙 정렬 */
+  text-align: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px;
+  color: white;
+}
+.text {
+  margin-bottom: 50px;
+  color: white;
+}
+.Central_Menu {
+  margin-top: 20px;
+}
+
+.Button-Container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: absolute; /* 부모 요소인 .MainImage를 기준으로 고정 */
+}
+
+.Button-Item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.ButtonImage {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.Span {
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.ButtonImage:hover {
+  opacity: 0.7;
+}
+.container {
+  display: flex;
+  align-items: center; /* Vertically centers the content */
+  gap: 20px; /* Adjust space between each element */
+  margin-left: 55px;
+}
+
+.wight, .height, .PH, .Bmi {
+  display: flex;
+  align-items: center; /* Vertically centers the text and images */
+  margin-right: 95px;
+  color: white;
+}
+
+.weight_button {
+  width: 20px; /* Adjust the size of the buttons */
+  height: 20px;
+  margin-right: 10px; /* Adds space between the button and the text */
+}
+
+/* 그래프 크기와 위치 조정 */
+.recharts-responsive-container {
+  margin-right: 30px; /* 중앙 정렬 */
+}
+
+/* 차트 제목 스타일 (필요한 경우 추가) */
+.Graph-section h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 레전드, 툴팁에 대한 스타일 */
+.recharts-legend-item {
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* 툴팁 스타일 */
+.recharts-tooltip-item {
+  color: #000;
+}
+
+/* X축 레이블 스타일 */
+.recharts-xAxis text {
+  fill: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Y축 레이블 스타일 */
+.recharts-yAxis text {
+  fill: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 그래프 라인 스타일 */
+.recharts-line {
+  stroke: #C9F439; /* 라인 색상 */
+  stroke-width: 3;  /* 선의 두께 */
+  filter: drop-shadow(0 0 15px rgba(201, 244, 57, 0.8)); /* 빛나는 그림자 효과 */
+}
+
+/* 그래프의 점에 대한 스타일 */
+.recharts-dot {
+  fill: #C9F439; /* 점 색상 */
+  stroke: white;
+  stroke-width: 2px;
+}
+
+/* 툴팁 스타일 */
+.recharts-tooltip-wrapper {
+  background-color: rgba(0, 0, 0, 0.7); /* 툴팁 배경 */
+  border-radius: 8px;
+}
+
+.recharts-tooltip-item {
+  color: white; /* 툴팁 내용 텍스트 색상 */
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recharts-tooltip-label {
+  color: #C9F439; /* 레이블 색상 */
+}
+
+/* Y축 그리드 스타일 */
+.recharts-cartesianGrid line {
+  stroke: rgba(255, 255, 255, 0.2); /* 그리드 색상 */
+  stroke-width: 1px;
+  stroke-dasharray: 5 5; /* 점선 스타일 */
+}
+
+/* X축 그리드 스타일 */
+.recharts-cartesianGrid path {
+  stroke: rgba(255, 255, 255, 0.2); /* X축 그리드 색상 */
+}
+

@@ -1,45 +1,52 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import config from "../config";
 
 export default function RecordBody() {
-  const [userid, setuserid] = useState(sessionStorage.getItem("userid"));
+  const [userid] = useState(sessionStorage.getItem("userid"));
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [fatpercentage, setFatPercentage] = useState("");
   const [bmi, setBmi] = useState(null);
   const [inbodyScore, setInbodyScore] = useState(null);
   const navigate = useNavigate();
+  const token = sessionStorage.getItem("token");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const userInfo = {
-      userid,
+    const userBodyInfo = {
+      userid: userid,
       height: parseFloat(height),
       weight: parseFloat(weight),
       fatpercentage: parseFloat(fatpercentage),
     };
 
-    console.log("📌 보내는 데이터:", userInfo);
+    console.log("📌 보내는 데이터:", userBodyInfo);
 
     try {
-      const response = await fetch("http://localhost:8080/upload/recorduserbody", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userInfo),
-      });
+      const response = await fetch(
+        `http://${config.SERVER_URL}/upload/recorduserbody`,
+
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // JWT 토큰 추가
+          },
+          body: JSON.stringify(userBodyInfo),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log("📌 서버 응답 데이터:", responseData); // 서버 응답 데이터 확인
+        console.log("📌 서버 응답 데이터:", responseData);
 
         setBmi(responseData.bmi);
         setInbodyScore(responseData.inbodyScore);
 
         alert("신체 정보가 저장되었습니다! 메인 페이지로 이동합니다.");
-        navigate("/graph");
+        navigate("/main");
       } else {
         alert("신체 정보 저장 실패! 다시 시도해주세요.");
       }
@@ -90,11 +97,21 @@ export default function RecordBody() {
       {bmi !== null && inbodyScore !== null && (
         <div>
           <h2>📊 InBody 결과</h2>
-          <p><strong>📏 키:</strong> {height} cm</p>
-          <p><strong>⚖️ 몸무게:</strong> {weight} kg</p>
-          <p><strong>📉 체지방률 :</strong> {fatpercentage} %</p>
-          <p><strong>💪 BMI:</strong> {bmi.toFixed(2)}</p>
-          <p><strong>🔥 InBody Score:</strong> {inbodyScore.toFixed(2)}</p>
+          <p>
+            <strong>📏 키:</strong> {height} cm
+          </p>
+          <p>
+            <strong>⚖️ 몸무게:</strong> {weight} kg
+          </p>
+          <p>
+            <strong>📉 체지방률 :</strong> {fatpercentage} %
+          </p>
+          <p>
+            <strong>💪 BMI:</strong> {bmi.toFixed(2)}
+          </p>
+          <p>
+            <strong>🔥 InBody Score:</strong> {inbodyScore.toFixed(2)}
+          </p>
         </div>
       )}
     </div>
