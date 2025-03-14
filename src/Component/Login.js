@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import config from "../config";
 import '../Style/login.css';
-
-
 export default function Login() {
   const [userid, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
+  const handleSignUpClick = () => {
+    navigate('/register');
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -17,24 +19,35 @@ export default function Login() {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userInfo),
-      });
+      const response = await fetch(
+        `http://${config.SERVER_URL}/request/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(userInfo),
+        }
+      );
 
       if (response.ok) {
+        const data = await response.json();
+
         console.log("Login successful");
-        sessionStorage.setItem("userid", userid);
-        navigate("/main");
-        // 성공 시 추가적인 로직 (예: 리다이렉트)
+
+        alert("로그인 성공!");
+        sessionStorage.setItem("userid", userid); 
+        navigate("/main"); //메인 페이지 이동
+      } else if (response.status === 403) {
+        // 로그인 차단 (5회 이상 실패)
+        const data = await response.json();
+        setErrorMessage(data.error || "여러 번 시도하셨습니다. 잠시 후 다시 시도하세요.");
       } else {
-        console.error("Invalid credentials");
-        // 실패 시 추가적인 로직
+        setErrorMessage("로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
       }
     } catch (error) {
+      setErrorMessage("서버 오류 발생! 관리자에게 문의하세요.");
       console.error("Error:", error);
     }
   };
@@ -43,32 +56,37 @@ export default function Login() {
     <div>
       <div className="Main_Container">
         <h2 className="Main_Title"></h2>
-        <img src="/image/MAIN_BACKIMAGE.png" alt="Background" className="MainImage"></img>
-        <img src="/image/Vector9.png" alt="" className="MainImage_Vector"></img>
+        <img src="/image/MAIN_BACKIMAGE.png" alt="Background" className="MainImage" />
+        <img src="/image/Vector9.png" alt="" className="MainImage_Vector" />
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} {/* 로그인 5회 실패시 에러메세지 p태그로 반환 */}
         <form onSubmit={handleSubmit}>
-        <div>
-          <labe className="USERLOGINID_EMAIL">EMAIL</labe>
-          <input
-            className="INPUTTEXT1"
-            type="text"
-            value={userid}
-            onChange={(e) => setUserId(e.target.value)}
-            required
-          />
+          <div>
+            <label className="USERLOGINID_EMAIL">EMAIL</label>
+            <input
+              className="INPUTTEXT1"
+              type="text"
+              value={userid}
+              onChange={(e) => setUserId(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label className="USERLOGIN_PASSWORD">PASSWORD</label>
+            <input
+              className="INPUTTEXT2"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className="LOGIN_BUTTON" type="submit">LOGIN</button>
+          <label className="SIGNUP_BUTTON">
+            Don't have an account?
+            <button className="BUTTON" onClick={handleSignUpClick}>Sign_up</button>
+          </label>
+        </form>
         </div>
-        <div>
-          <label className="USERLOGIN_PASSWORD">PASSWORD</label>
-          <input
-            className="INPUTTEXT2"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button className="LOGIN_BUTTON" type="submit">LOGIN</button>
-      </form>
-      </div>
     </div>
   );
 }
