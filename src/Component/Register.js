@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 훅
+import config from "../config";
 import "../Style/legister.css"
 export default function Register() {
   const navigate = useNavigate(); // 페이지이동 userNavigate()
@@ -17,7 +18,7 @@ export default function Register() {
     birth: "",
   });
 
-  // 현재 날짜 기준으로 최소 1년 전 날짜 계산 (오늘 날짜나 미래 날짜 선택시 데이터베이스에 부적절한 값이 적용됨)
+  // 현재 날짜 기준으로 최소 1년 전 날짜 계산 (오늘 날짜나 미래 날짜 선택시 데이터베이스에 부적절한 값이 적용됨됨)
   const minBirthDate = new Date();
   minBirthDate.setFullYear(minBirthDate.getFullYear() - 100); // 최대 100년 전까지 입력 가능
   const maxBirthDate = new Date();
@@ -26,7 +27,9 @@ export default function Register() {
   useEffect(() => {
     const kakaoApiKey = process.env.REACT_APP_KAKAO_API_KEY;
     if (!kakaoApiKey) {
-      console.error("🚨 Kakao API 키가 설정되지 않았습니다! .env 파일을 확인하세요.");
+      console.error(
+        "🚨 Kakao API 키가 설정되지 않았습니다! .env 파일을 확인하세요."
+      );
       return;
     }
 
@@ -45,7 +48,8 @@ export default function Register() {
       }
 
       const script = document.createElement("script");
-      script.src = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+      script.src =
+        "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
       script.async = true;
       script.onload = () => setIsPostcodeLoaded(true);
       script.onerror = () => console.error("🚨 우편번호 API 로드 실패!");
@@ -69,8 +73,7 @@ export default function Register() {
 
     try {
       const response = await fetch(
-        // eslint-disable-next-line no-undef
-        `${config.SERVER_URL}/upload/register`,
+        `http://${config.SERVER_URL}/upload/register`,
         {
           method: "POST",
           headers: {
@@ -87,6 +90,7 @@ export default function Register() {
       } else {
         alert("회원가입 실패! 입력한 정보를 다시 확인해주세요.");
         console.error("Failed to register user");
+        // 실패 시 추가적인 로직
       }
     } catch (error) {
       alert("관리자에게 문의해주세요.");
@@ -96,12 +100,16 @@ export default function Register() {
 
   const handleAddressSearch = () => {
     if (!isKakaoLoaded || !isPostcodeLoaded) {
-      alert("🚨 카카오맵 API 또는 우편번호 API가 아직 완전히 로드되지 않았습니다. 잠시 후 다시 시도해주세요.");
+      alert(
+        "🚨 카카오맵 API 또는 우편번호 API가 아직 완전히 로드되지 않았습니다. 잠시 후 다시 시도해주세요."
+      );
       return;
     }
 
     if (!window.daum || !window.daum.Postcode) {
-      alert("🚨 우편번호 검색 API가 아직 로드되지 않았습니다. 새로고침 후 다시 시도해주세요.");
+      alert(
+        "🚨 우편번호 검색 API가 아직 로드되지 않았습니다. 새로고침 후 다시 시도해주세요."
+      );
       return;
     }
 
@@ -113,7 +121,7 @@ export default function Register() {
   };
 
   return (
-      <div className="Register_Container">
+    <div className="Register_Container">
       <div className="Main_container">
         <div className="Main_image">
           <img src="/image/RegisterImage.jpg" alt="Background" className="RegisterImage" />
