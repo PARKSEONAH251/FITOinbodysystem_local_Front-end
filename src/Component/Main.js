@@ -12,9 +12,6 @@ export default function Main() {
   const [loading, setLoading] = useState(true);
   const useridRef = useRef(sessionStorage.getItem("userid"));
 
-  const navigateToRank = () => navigate("/rank");
-  const navigateToTodo = () => navigate("/todo");
-
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => goToNext(),
     onSwipedRight: () => goToPrevious(),
@@ -102,6 +99,7 @@ export default function Main() {
   return (
     <div className="Main_Container">
     <a className="maintitle">FitEnd</a>
+    
     <img src="/image/black.png" alt="Background" className="MainImage" />
     <div className="Central-Menu">
       <div className="anime_container" {...swipeHandlers}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
+import "../Style/FoodList.css";
 
 export default function FoodSearchR() {
   const [data, setData] = useState(null);
@@ -9,6 +10,22 @@ export default function FoodSearchR() {
   const [dietMemo, setDietMemo] = useState(""); // 메모 입력
   const [userid, setUserid] = useState("");
   const navigate = useNavigate();
+
+  const navigateMain = () => {navigate("/main");};
+  const navigateToRecordBody = () => {navigate("/recodbody");};
+  const navigateFood=() => {navigate("/FoodSearchR");};
+  const navigateGraph = () => {navigate("/Graph")};
+
+  // 로그아웃 처리
+  const handleLogout = async () => {
+    await fetch(`http://${config.SERVER_URL}/request/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+
+    sessionStorage.removeItem("useridRef");
+    navigate("/login");
+  };
 
   // 쿠키에 JWT 존재 여부만 확인함
   const getCookie = (name) => {
@@ -89,7 +106,10 @@ export default function FoodSearchR() {
   };
 
   return (
-    <div>
+    <div className="Main_Container">
+      <img src="/image/black.png" alt="Background" className="MainImage" />
+        <a className="maintitle">FitEnd</a>
+        <div className="food-container">
       <h2>날짜 선택</h2>
       <input
         type="date"
@@ -125,7 +145,23 @@ export default function FoodSearchR() {
         <p>Loading...</p>
       )}
 
-      <button onClick={() => navigate("/todo")}>뒤로가기</button>
-    </div> //
+  <button onClick={() => navigate("/todo")}>FoodList</button>
+
+  <div className="button-container">
+          {[
+            { img: "HOME.png", alt: "Main", action: navigateMain, label: "Main" },
+            { img: "PAPAR.png", alt: "Paper", action: navigateToRecordBody, label: "Paper" },
+            { img: "Vector7.png", alt: "Graph", action: navigateGraph, label: "Graph" },
+            { img: "Vector8.png", alt: "Food", action: navigateFood, label: "Food" },
+            { img: "PEOPLE.png", alt: "Logout", action: handleLogout, label: "Logout" },
+          ].map(({ img, alt, action, label }, idx) => (
+            <div key={idx} className="button-item">
+              <img src={`/image/${img}`} alt={alt} className="buttonimage" onClick={action} />
+              <span className="span">{label}</span>
+            </div>
+          ))}
+        </div>
+  </div>
+</div>
   );
 }
