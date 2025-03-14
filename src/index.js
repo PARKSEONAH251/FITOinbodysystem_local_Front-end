@@ -9,10 +9,11 @@ import Main from "./Component/Main"; // 메인 화면 컴포넌트
 import RecordBody from "./Component/RecordBody";
 import Graph from "./Component/Graph";
 import RankPage from "./Component/RankPage";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
+import TodoCalender from "./Component/TodoCalender";
+import ClickThis from "./Component/ClickThis";
+import FoodSearchR from "./Component/FoodSearchR";
+const App = () => {
+  return (
     <Router>
       <Routes>
         <Route path="/register" element={<Register />} />
@@ -20,10 +21,21 @@ root.render(
         <Route path="/main" element={<Main />} />
         <Route path="/" element={<Login />} />
         <Route path="/recodbody" element={<RecordBody />} />
-        <Route path="/Graph" element={<Graph />} />
-        <Route path="/RankPage" element={<RankPage/>}/>
+        <Route path="/rank" element={<RankPage />} />
+        <Route path="/food" element={<FoodSearchR />} />
+        <Route path="/todo" element={<TodoCalender />} />
+        <Route path="/ClickThis" element={<ClickThis />} />
+        <Route path="/graph" element={<Graph />} />
+        <Route path="/FoodSearchR" element={<FoodSearchR />} />
       </Routes>
     </Router>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
   </React.StrictMode>
 );
 

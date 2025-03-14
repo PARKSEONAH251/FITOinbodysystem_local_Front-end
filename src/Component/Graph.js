@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
 import "../Style/graph.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function Graph() {
-  const userid = sessionStorage.getItem("userid");
+  const useridRef = useRef(sessionStorage.getItem("userid"));
   const navigate = useNavigate();
   const [bodyrecod, setBodyRecod] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,40 +13,69 @@ export default function Graph() {
   // 누적된 BMI 데이터와 오늘의 BMI 상태 관리
   const [bmiData, setBmiData] = useState([]);
 
-  const navigateMain = () => {
-    navigate("/main");
+  const navigateMain = () => {navigate("/main");};
+  const navigateToRecordBody = () => {navigate("/recodbody");};
+  const navigateFood=() => {navigate("/FoodList");};
+  const navigateRank = () => {navigate("/rank");};
+  const handleLogout = async () => {
+    await fetch(`http://${config.SERVER_URL}/request/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
   };
 
-  const navigateToRecordBody = () => {
-    navigate("/recodbody");
-  };
+  // const navigateGraph = () => {navigate("/Graph")};
+  // useEffect(() => {
+  //   if (!userid) {
+  //     navigate("/login");
+  //     return;
+  //   }
 
-  const navigateToRank = () => {
-    navigate("/RankPage");
-  };
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("userid");
-    navigate("/login");
-  };
+  //   fetch(`http://${config.SERVER_URL}/download/recentuserbody/${userid}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setBodyRecod(data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching users:", error);
+  //       setLoading(false);
+  //     });
+  // }, [userid]);
 
   useEffect(() => {
-    if (!userid) {
-      navigate("/login");
-      return;
-    }
-
-    fetch(`http://${config.SERVER_URL}/download/recentuserbody/${userid}`)
-      .then((response) => response.json())
+    fetch(`http://${config.SERVER_URL}/request/validate`, {
+      method: "GET",
+      credentials: "include", // 쿠키 자동 포함
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Unauthorized");
+        return response.json();
+      })
       .then((data) => {
-        setBodyRecod(data);
+        console.log("로그인 상태 확인 성공:", data);
+        useridRef.current = data.userid;
+        sessionStorage.setItem("userid", data.userid);
+
+        // 사용자 신체 기록 가져오기
+        return fetch(`http://${config.SERVER_URL}/download/recentuserbody/${data.userid}`, {
+          method: "GET",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+        });
+      })
+      .then((response) => response.json())
+      .then((bodyData) => {
+        console.log("신체 기록 응답 데이터:", bodyData);
+        setBodyRecod(bodyData);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching users:", error);
-        setLoading(false);
+      .catch(() => {
+        console.warn("인증 실패. 로그인 페이지로 이동");
+        sessionStorage.removeItem("userid");
+        navigate("/login");
       });
-  }, [userid]);
+  }, [navigate]);
 
   // 누적된 BMI 데이터와 오늘의 BMI 데이터를 업데이트
   useEffect(() => {
@@ -77,7 +106,7 @@ export default function Graph() {
 
   return (
     <div>
-      {userid ? (
+      {useridRef ? (
         <>
           <div className="Graph_Container">
             <img src="/image/black.png" alt="Background" className="MainImage" />
@@ -118,31 +147,31 @@ export default function Graph() {
               </div>
               {/* 기타 UI 구성 */}
               <div className="Button-Container">
-                <div onClick={navigateMain} className="Button-Item">
-                  <img src="/image/HOME.png" alt="Main" className="ButtonImage" />
-                  <span className="Span">Main</span>
-                </div>
+      <div className="Button-Item">
+        <img src="/image/HOME.png" alt="Main" className="ButtonImage" onClick={navigateMain} />
+        <span className="Span">Main</span>
+      </div>
 
-                <div className="Button-Item">
-                  <img src="/image/PAPAR.png" alt="Paper" className="ButtonImage" onClick={navigateToRecordBody} />
-                  <span className="Span">Paper</span>
-                </div>
+      <div className="Button-Item">
+        <img src="/image/PAPAR.png" alt="Paper" className="ButtonImage" onClick={navigateToRecordBody} />
+        <span className="Span">Paper</span>
+      </div>
 
-                <div className="Button-Item">
-                  <img src="/image/rankbutton.png" alt="rank" className="ButtonImage" onClick={navigateToRank} />
-                  <span className="Span">Ranking</span>
-                </div>
+      <div className="Button-Item">
+        <img src="/image/Vector7.png" alt="rank" className="ButtonImage" onClick={navigateRank} />
+        <span className="Span">Rank</span>
+      </div>
 
-                <div className="Button-Item">
-                  <img src="/image/Vector8.png" alt="Food" className="ButtonImage" />
-                  <span className="Span">Food</span>
-                </div>
+      <div className="Button-Item">
+        <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
+        <span className="Span">Food</span>
+      </div>
 
-                <div className="Button-Item">
-                  <img src="/image/PEOPLE.png" alt="Logout" className="ButtonImage" onClick={handleLogout} />
-                  <span className="Span">Logout</span>
-                </div>
-              </div>
+      <div className="Button-Item">
+        <img src="/image/PEOPLE.png" alt="Logout" className="ButtonImage" onClick={handleLogout} />
+        <span className="Span">Logout</span>
+      </div>
+    </div>
             </div>
           </div>
         </>

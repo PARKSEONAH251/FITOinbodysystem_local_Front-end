@@ -3,46 +3,75 @@ import config from "../config";
 import { useNavigate } from "react-router-dom";
 import "../Style/rankpage.css";
 
+
 export default function RankPage() {
   const [maleRank, setMaleRank] = useState([]);
   const [femaleRank, setFemaleRank] = useState([]);
-  const [selectedGender, setSelectedGender] = useState("male"); // 기본값: 남성 랭킹
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedGender, setSelectedGender] = useState("male"); // 기본값: 남성 랭킹
+
   const navigate = useNavigate();
+  const navigateMain = () => {navigate("/main");};
+  const navigateToRecordBody = () => {navigate("/recodbody");};
+  const navigateFood=() => {navigate("/FoodSearchR");};
+  const navigateGraph = () => {navigate("/Graph")};
 
-  const navigateMain = () => {
-    navigate("/main");
-  }
-
-  const navigateToRecordBody = () => {
-    navigate("/recodbody");
-  };
-
-  const navigateGraph = () => {
-    navigate("/Graph")
-  }
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("userid"); // 로그아웃 시 사용자 정보 삭제
-    navigate("/login"); // 로그인 페이지로 이동
-  };
+  // 로그아웃 처리
+  const handleLogout = async () => {
+    await fetch(`http://${config.SERVER_URL}/request/logout`, {
+      method: "POST",
+      credentials: "include",
+    });}
 
   useEffect(() => {
-    fetch(`http://${config.SERVER_URL}/download/scorerankmale`)
-      .then((res) => res.ok ? res.json() : Promise.reject("남성 랭킹 오류"))
-      .then(setMaleRank)
-      .catch(setError);
+    // 남성 랭킹 조회
+    fetch(`http://${config.SERVER_URL}/download/scorerankmale`, {
+      method: "GET",
+      credentials: "include", // 쿠키 포함 요청
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("서버 응답 오류 (남성 랭킹)");
+        }
+        return res.json();
+      })
+      .then((data) => setMaleRank(data))
+      .catch((error) => {
+        console.error("남성 랭킹 조회 오류:", error);
+        setError(error.message);
+      });
 
-    fetch(`http://${config.SERVER_URL}/download/scorerankfemale`)
-      .then((res) => res.ok ? res.json() : Promise.reject("여성 랭킹 오류"))
-      .then(setFemaleRank)
-      .catch(setError)
+    // 여성 랭킹 조회
+    fetch(`http://${config.SERVER_URL}/download/scorerankfemale`, {
+      method: "GET",
+      credentials: "include", // 쿠키 포함 요청
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("서버 응답 오류 (여성 랭킹)");
+        return res.json();
+      })
+      .then((data) => setFemaleRank(data))
+      .catch((error) => {
+        console.error("여성 랭킹 조회 오류:", error);
+        setError(error.message);
+      })
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>📡 데이터를 불러오는 중입니다...</p>;
-  if (error) return <p>⚠️ 오류 발생: {error}</p>;
+  if (loading) {
+    return <p>📡 데이터를 불러오는 중입니다...</p>;
+  }
+
+  if (error) {
+    return <p>⚠️ 오류 발생: {error}</p>;
+  }
 
   const rankings = selectedGender === "male" ? maleRank : femaleRank;
 
@@ -136,7 +165,7 @@ export default function RankPage() {
         </div>
 
         <div className="Button-Item">
-          <img src="/image/Vector8.png" alt="Food" className="ButtonImage" />
+          <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
           <span className="Span">Food</span>
         </div>
 
