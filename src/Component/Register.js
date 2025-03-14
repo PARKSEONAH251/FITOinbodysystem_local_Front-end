@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 훅
 import config from "../config";
-
+import "../Style/legister.css"
 export default function Register() {
   const navigate = useNavigate(); // 페이지이동 userNavigate()
 
@@ -121,12 +121,19 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <h2>회원가입</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="Register_Container">
+      <div className="Main_container">
+        <div className="Main_image">
+          <img src="/image/RegisterImage.jpg" alt="Background" className="RegisterImage" />
+          <img src="/image/Vector9.png" alt="Overlay" className="RegisterImage_Vector" />
+        </div>
+      </div>
+      <h2 className="Register_Title">SIGN UP</h2>
+      <form className="form" onSubmit={handleSubmit}>
         <div>
-          <label>User ID:</label>
+          <label className="USERID">UserId:</label>
           <input
+            className="input_text"
             type="text"
             name="userid"
             value={userInfo.userid}
@@ -135,8 +142,9 @@ export default function Register() {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label className="PASSWORD">Password:</label>
           <input
+            className="input_text"
             type="password"
             name="password"
             value={userInfo.password}
@@ -145,8 +153,9 @@ export default function Register() {
           />
         </div>
         <div>
-          <label>Email:</label>
+          <label className="EMAIL">Email:</label>
           <input
+            className="input_text"
             type="email"
             name="email"
             value={userInfo.email}
@@ -155,8 +164,8 @@ export default function Register() {
           />
         </div>
         <div>
-          <label>Sex:</label>
-          <div>
+          <label className="SEXUAL_SELECTION">SEXUAL SELECTION</label>
+          <div className="gender-selection">
             <label>
               <input
                 type="radio"
@@ -182,19 +191,21 @@ export default function Register() {
           </div>
         </div>
         <div>
-          <label>Province:</label>
-          <input type="text" name="region1" value={userInfo.region1} readOnly />
+          <label className="PROVINCE">Province:</label>
+          <input className="input_text" type="text" name="region1" value={userInfo.region1} readOnly />
         </div>
         <div>
-          <label>City:</label>
-          <input type="text" name="region2" value={userInfo.region2} readOnly />
-          <button type="button" onClick={handleAddressSearch}>
+          <label className="CITY">City:
+          <button className="CITY_Button" type="button" onClick={handleAddressSearch}>
             주소 검색
           </button>
+          </label>
+          <input className="input_text" type="text" name="region2" value={userInfo.region2} readOnly />
         </div>
         <div>
-          <label>Birth:</label>
+          <label className="BIRTH">Birth:</label>
           <input
+            className="input_text"
             type="date"
             name="birth"
             value={userInfo.birth}
@@ -204,7 +215,7 @@ export default function Register() {
             required
           />
         </div>
-        <button type="submit">회원가입</button>
+        <button className="Register_Button" type="submit">회원가입</button>
       </form>
     </div>
   );
