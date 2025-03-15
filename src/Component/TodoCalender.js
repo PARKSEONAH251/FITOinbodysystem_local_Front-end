@@ -110,7 +110,7 @@ export default function TodoCalender() {
         {filteredData.length > 0 ? (
           filteredData.map((record, index) => (
             <div key={index} className="diet-record">
-              <p>📌 메모: {record.dietMemo || "메모 없음"}</p>
+              <p>📌 식사: {record.dietMemo || "메모 없음"}</p>
               <p>📅 날짜: {record.timestamp ? new Date(record.timestamp).toLocaleDateString("ko-KR") : "날짜 없음"}</p>
               <p>🍽️ 음식: {record.foodNm || "음식 없음"}</p>
               <p>🔥 칼로리: {record.enerc || 0} kcal</p>

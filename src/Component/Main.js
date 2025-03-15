@@ -8,8 +8,6 @@ import "../Style/main.css";
 export default function Main() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [bodyrecod, setBodyRecod] = useState([]);
-  const [loading, setLoading] = useState(true);
   const useridRef = useRef(sessionStorage.getItem("userid"));
 
   const swipeHandlers = useSwipeable({
@@ -19,7 +17,7 @@ export default function Main() {
 
   const navigateMain = () => {navigate("/main");};
   const navigateToRecordBody = () => {navigate("/recodbody");};
-  const navigateFood=() => {navigate("/FoodSearchR");};
+  const navigateFood=() => {navigate("/MealTimingselect");};
   const navigateGraph = () => {navigate("/Graph")};
 
   // 로그아웃 처리

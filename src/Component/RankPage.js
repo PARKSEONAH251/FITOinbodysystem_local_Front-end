@@ -14,7 +14,7 @@ export default function RankPage() {
   const navigate = useNavigate();
   const navigateMain = () => {navigate("/main");};
   const navigateToRecordBody = () => {navigate("/recodbody");};
-  const navigateFood=() => {navigate("/FoodSearchR");};
+  const navigateFood=() => {navigate("/MealTimingselect");};
   const navigateGraph = () => {navigate("/Graph")};
 
   // 로그아웃 처리

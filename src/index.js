@@ -12,6 +12,7 @@ import RankPage from "./Component/RankPage";
 import TodoCalender from "./Component/TodoCalender";
 import ClickThis from "./Component/ClickThis";
 import FoodSearchR from "./Component/FoodSearchR";
+import MealTimingselect from "./Component/MealTimingselect";
 const App = () => {
   return (
     <Router>
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/ClickThis" element={<ClickThis />} />
         <Route path="/graph" element={<Graph />} />
         <Route path="/FoodSearchR" element={<FoodSearchR />} />
+        <Route path="/MealTimingselect" element={<MealTimingselect/>}/>
       </Routes>
     </Router>
   );
