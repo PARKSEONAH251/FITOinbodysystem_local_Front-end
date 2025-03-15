@@ -1,37 +1,62 @@
-.Main_Container {
+.RankPage_Container{
+  position: relative; /* Parents needs relative positioning */
   width: 360px;
   height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  background: black;
+  margin: 50px auto;
+  background: transparent;
   padding: 20px;
-  color: white;
+  margin-top: 200px;
+  overflow: visible; /* Allow scrollable content */
   border-radius: 10px;
-  justify-content: flex-start;
 }
 
-.title-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 10px;
-  margin-top: 50px;
-}
-
-.title {
-  font-size: 20px;
+.RecordBodyTitle{
+  font-family: 'ThinkBold', sans-serif;
+  font-size: 32px;
+  position: absolute;  /* 고정된 위치로 설정 */
+  top: 15px;       /* 상단에서 100px 아래로 위치 */
+  left: 50%;        /* 화면 가로 중앙에 배치 */
+  transform: translateX(-50%); /* 정확한 중앙 정렬을 위한 오프셋 */
+  z-index: 2;         
+  color: white;
+  padding-bottom: 5px;  /* 텍스트와 밑줄 사이 간격 설정 */
+  border-bottom: 4px solid #C9F439; /* 밑줄 색상과 두께 설정 */
   font-weight: bold;
 }
 
+.RecordBodyMainTitle {
+  position: absolute;  /* 화면의 특정 위치에 고정 */
+  margin-top: -90px;          /* 원하는 위치 설정 */
+  right: 30%;          /* 화면 가운데 정렬 */
+  transform: translateX(-50%);
+  z-index: 3;
+  font-size: 50px;
+  color: #fff;
+  margin-right: 0;    /* 중앙 정렬을 위해 margin-right 제거 */
+}
+
+
+.RankPageImage{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .gender-buttons {
+  position: absolute;
+  left: 75%;
+  margin-top: 85%; /* 화면 높이의 70% 위치 */
+  transform: translateX(-50%);
   display: flex;
   gap: 10px;
 }
 
-.gender-btn {
+.gender-btn{
   background: #444;
   color: white;
   border: none;
@@ -40,45 +65,83 @@
   cursor: pointer;
 }
 
-.gender-btn.active {
+.gender-btn.active{
   background: #C9F439;
   color: black;
 }
 
+/* 1~3등 프로필 영역 위치 고정 */
 .top-rank-container {
-display: flex;
-justify-content: center;
-align-items: flex-end;
-gap: 50px; /* 요소 간 간격 */
-margin: 20px 0;
-height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 50px; /* 요소 간 간격 */
+  position: absolute; /* 위치 고정 */
+  top: 150px; /* 원하는 위치 조정 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 120px;
+  z-index: 2;
 }
 
+/* 1등, 2등, 3등 프로필 정렬 */
 .rank-profile {
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 1등 - 중앙 */
 .rank-1 {
-transform: scale(1.7);
-order: 2; /* 가운데 배치 */
-margin-bottom: 20px;
+  transform: scale(1.7);
+  order: 2; /* 가운데 배치 */
+  margin-bottom: 20px;
 }
 
 /* 2등 - 왼쪽 */
 .rank-2 {
-transform: scale(1.2);
-order: 1; /* 왼쪽 배치 */
+  transform: scale(1.2);
+  order: 1; /* 왼쪽 배치 */
 }
 
 /* 3등 - 오른쪽 */
 .rank-3 {
-transform: scale(1.2);
-order: 3; /* 오른쪽 배치 */
+  transform: scale(1.2);
+  order: 3; /* 오른쪽 배치 */
 }
 
+/* gender-buttons 위치 고정 */
+.gender-buttons {
+  position: absolute;
+  top: 50px; /* 고정된 위치 유지 */
+  left: 75%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3; /* 랭킹 리스트보다 위에 위치 */
+}
+
+.ranking_list {
+  width: 95%;
+  height: 250px; /* 고정된 높이 유지 */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute; /* 위치 고정 */
+  top: 350px; /* 원하는 위치에 정확히 배치 */
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 20px; /* 위쪽 여백 조정 */
+  z-index: 2;
+}
+
+
+/* 기타 스타일 유지 */
+.rank-name {
+  color: #fff;
+}
 
 .profile-image {
   width: 60px;
@@ -87,72 +150,16 @@ order: 3; /* 오른쪽 배치 */
   background: gray;
 }
 
-.rank-name {
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.ranking-list {
-  width: 100%;
-  max-height: 250px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .ranking-item {
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 8%;
   padding: 8px;
-  border-bottom: 1px solid white;
   justify-content: space-between;
-}
-
-.profile-small {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.user-id {
-  flex-grow: 1;
-  text-align: left;
-  margin-left: 10px;
-}
-
-.user-score{
-  text-align: right;
-  margin-right: 10px;
+  color: #fff;
 }
 
 .rank-position {
   font-weight: bold;
 }
 
-.button-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  padding: 10px;
-  position: absolute;
-  bottom: 20px;
-}
-
-.button-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-}
-
-.buttonimage {
-  width: 30px;
-  height: 30px;
-}
-
-.button-item span {
-  font-size: 10px;
-  margin-top: 5px;
-}
