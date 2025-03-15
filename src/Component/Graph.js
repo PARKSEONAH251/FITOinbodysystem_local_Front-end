@@ -147,31 +147,31 @@ export default function Graph() {
               </div>
               {/* 기타 UI 구성 */}
               <div className="Button-Container">
-      <div className="Button-Item">
-        <img src="/image/HOME.png" alt="Main" className="ButtonImage" onClick={navigateMain} />
-        <span className="Span">Main</span>
-      </div>
+                <div className="Button-Item">
+                  <img src="/image/HOME.png" alt="Main" className="ButtonImage" onClick={navigateMain} />
+                  <span className="Span">Main</span>
+                </div>
 
-      <div className="Button-Item">
-        <img src="/image/PAPAR.png" alt="Paper" className="ButtonImage" onClick={navigateToRecordBody} />
-        <span className="Span">Paper</span>
-      </div>
+                <div className="Button-Item">
+                  <img src="/image/PAPAR.png" alt="Paper" className="ButtonImage" onClick={navigateToRecordBody} />
+                  <span className="Span">Paper</span>
+                </div>
 
-      <div className="Button-Item">
-        <img src="/image/Vector7.png" alt="rank" className="ButtonImage" onClick={navigateRank} />
-        <span className="Span">Rank</span>
-      </div>
+                <div className="Button-Item">
+                  <img src="/image/Vector7.png" alt="rank" className="ButtonImage" onClick={navigateRank} />
+                  <span className="Span">Rank</span>
+                </div>
 
-      <div className="Button-Item">
-        <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
-        <span className="Span">Food</span>
-      </div>
+                <div className="Button-Item">
+                  <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
+                  <span className="Span">Food</span>
+                </div>
 
-      <div className="Button-Item">
-        <img src="/image/PEOPLE.png" alt="Logout" className="ButtonImage" onClick={handleLogout} />
-        <span className="Span">Logout</span>
-      </div>
-    </div>
+                <div className="Button-Item">
+                  <img src="/image/PEOPLE.png" alt="Logout" className="ButtonImage" onClick={handleLogout} />
+                  <span className="Span">Logout</span>
+                </div>
+              </div>
             </div>
           </div>
         </>
