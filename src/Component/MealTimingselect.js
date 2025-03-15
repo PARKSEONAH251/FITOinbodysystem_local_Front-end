@@ -100,26 +100,27 @@ export default function MealTimingselect() {
       </div>
 
         {/* 🍽️ 선택한 날짜의 식사 기록 */}
-      <div className="meal-selection">
-        {/* <h3>{selectedDateFormatted}의 식사 기록</h3> */}
-        {mealTypes.map((meal) => (
-          <div key={meal} className="meal-button">
-            <span>{meal === "breakfast" ? "아침" : meal === "lunch" ? "점심" : "저녁"}</span>
-            <button onClick={() => navigateFoodsearchR(meal)}>+</button>
-            <div className="meal-data">
-              {mealsByType[meal].length > 0 ? (
-                mealsByType[meal].map((record, index) => (
-                //   <p key={index}>🍽️ {record.foodNm} ({record.enerc} kcal)</p>
-                  <span key={index}>🍽️ {record.foodNm}</span>
-                ))
-              ) : (
-                <span>📭 기록 없음</span>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
+        <div className="meal-selection">
+            {mealTypes.map((meal) => {
+                // meal 타입별 칼로리 총합 계산
+                const totalCalories = mealsByType[meal].reduce((sum, record) => sum + (record.enerc || 0), 0);
 
+                return (
+                <div key={meal} className="meal-button">
+                    <span>{meal === "breakfast" ? "아침" : meal === "lunch" ? "점심" : "저녁"}</span>
+                    <button onClick={() => navigateFoodsearchR(meal)}>+</button>
+                    <div className="meal-data">
+                    {mealsByType[meal].length > 0 ? (
+                        <span>🔥 총 칼로리: {totalCalories} kcal</span> // 총 칼로리 출력
+                    ) : (
+                        <span>📭 기록 없음</span>
+                    )}
+                    </div>
+                </div>
+                );
+            })}
+            </div>
+            <button onClick={() => navigate("/todo")}>내역 확인</button>
             <div className="button-container">
                 {[
                     { img: "HOME.png", alt: "Main", action: navigateMain, label: "Main" },

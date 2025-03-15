@@ -148,7 +148,7 @@ export default function FoodSearchR() {
         <p>Loading...</p>
       )}
 
-  <button onClick={() => navigate("/todo")}>FoodList</button>
+  
 
   <div className="button-container">
           {[
