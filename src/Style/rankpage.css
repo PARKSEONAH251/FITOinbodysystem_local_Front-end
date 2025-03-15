@@ -14,6 +14,35 @@
   overflow: visible; /* Allow scrollable content */
   border-radius: 10px;
 }
+.backgroundstar{
+  position: absolute;  /* 부모 기준으로 고정 */
+  top: -20%;           /* 원하는 위치로 고정 */
+  left: -45px;          /* 원하는 위치로 고정 */
+  width: 500px;
+  z-index: 1;
+}
+
+.backgroundFrame4{
+  position: absolute;
+  top: -12.5%;
+  left: 2px;
+  width: 400px;
+  z-index: 3;
+}
+.backgroundFrame3{
+  position: absolute;
+  top: -13.3%;
+  right: 5px;
+  width: 420px;
+  z-index: 3;
+}
+.backgroundFrame5{
+  position: absolute;
+  top: -13.3%;
+  left: 9px;
+  width: 420px;
+  z-index: 3;
+}
 
 .RecordBodyTitle{
   font-family: 'ThinkBold', sans-serif;
@@ -31,11 +60,11 @@
 
 .RecordBodyMainTitle {
   position: absolute;  /* 화면의 특정 위치에 고정 */
-  margin-top: -90px;          /* 원하는 위치 설정 */
-  right: 30%;          /* 화면 가운데 정렬 */
+  margin-top: -39px;          /* 원하는 위치 설정 */
+  right: 57%;          /* 화면 가운데 정렬 */
   transform: translateX(-50%);
   z-index: 3;
-  font-size: 50px;
+  font-size: 28px;
   color: #fff;
   margin-right: 0;    /* 중앙 정렬을 위해 margin-right 제거 */
 }
@@ -57,7 +86,7 @@
 }
 
 .gender-btn{
-  background: #444;
+  background: #7e3a99;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -66,8 +95,8 @@
 }
 
 .gender-btn.active{
-  background: #C9F439;
-  color: black;
+  background: #e7a9f3;
+  color: rgb(133, 51, 129);
 }
 
 /* 1~3등 프로필 영역 위치 고정 */
@@ -122,15 +151,20 @@
   z-index: 3; /* 랭킹 리스트보다 위에 위치 */
 }
 
+.genderbtn_title{
+  font-family: 'Agdasima', sans-serif;
+}
+
 .ranking_list {
+  font-family: 'Agdasima', sans-serif;
   width: 95%;
-  height: 250px; /* 고정된 높이 유지 */
+  height: 220px; /* 고정된 높이 유지 */
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute; /* 위치 고정 */
-  top: 350px; /* 원하는 위치에 정확히 배치 */
+  top: 410px; /* 원하는 위치에 정확히 배치 */
   left: 50%;
   transform: translateX(-50%);
   padding-top: 20px; /* 위쪽 여백 조정 */
@@ -153,7 +187,7 @@
 .ranking-item {
   display: flex;
   align-items: center;
-  width: 8%;
+  width: 80%;
   padding: 8px;
   justify-content: space-between;
   color: #fff;

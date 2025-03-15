@@ -13,19 +13,38 @@ export default function RankPage() {
 
   // 🐶 강아지 & 🐱 고양이 이미지 리스트 (Imgur에서 직접 이미지 링크 사용)
   const dogImages = [
-    "/image/rankimage/귀여운 하양 아이폰 강아지.jpg",
-    "/image/rankimage/빤히_보는_강아지.jpg",
-    "/image/rankimage/햄썸한_강아지.jpg",
-    "/image/rankimage/작업하는_강아지.jpg",
-    "/image/rankimage/안경쓴_강아지.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_002701861_06.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_002701861_09.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_002701861_10.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_01.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_02.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_03.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_04.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_05.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_06.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_07.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_08.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_09.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_10.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799.jpg",
+
+
+    
   ];
 
   const catImages = [
-    "/image/rankimage/모자_쓴_고양이.jpg",
-    "/image/rankimage/느낌_있는_고양이.jpg",
-    "/image/rankimage/노트북_보는_고양이.jpg",
-    "/image/rankimage/깜짝_놀란_고양이.jpg",
-    "/image/rankimage/그냥_고양이.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002701861_03.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002701861_05.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_01.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_02.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_03.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_04.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_05.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004049803.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004146870_02.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004146870_03.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004146870.jpg",
   ];
 
   const navigate = useNavigate();
@@ -91,7 +110,11 @@ export default function RankPage() {
   return (
     <div className="Main_Container">
         <a className="RecordBodyTitle">FitEnd</a>
-        <img src="/image/black.png" alt="Background" className="MainImage" />
+        <img src="/image/backgroundImage/Rectangle23.png" alt="Background" className="MainImage" />
+        <img src="/image/backgroundImage/별배경.png" alt="star" className="backgroundstar"/>
+        <img src="/image/backgroundImage/프레임4.png" alt="Frame4" className="backgroundFrame4"/>
+        <img src="/image/backgroundImage/프레임3.png" alt="Frame3" className="backgroundFrame3"/>
+        <img src="/image/backgroundImage/프레임5.png" alt="Frame5" className="backgroundFrame5"/>
         <a className="RecordBodyMainTitle">Ranking</a>
         {/* 🚀 **1~3등의 랜덤 프로필 이미지** */}
         <div className="top-rank-container">
@@ -114,23 +137,23 @@ export default function RankPage() {
             className={`gender-btn ${selectedGender === "male" ? "active" : ""}`} 
             onClick={() => handleGenderSelection("male")}
           >
-            MAN
+          <a className="genderbtn_title">MAN</a>
           </button>
           <button 
             className={`gender-btn ${selectedGender === "female" ? "active" : ""}`} 
             onClick={() => handleGenderSelection("female")}
           >
-            WOMAN
+          <a className="genderbtn_title">WOMAN</a>
           </button>
         </div>
-        <div className="ranking_list">
+        <div className="ranking_list" style={{ maxHeight: "400px", overflowY: "auto" }}>
           {rankings.slice(0, 10).map((user, index) => (
-            <div key={index} className="ranking-item">            
+            <div key={index} className="ranking-item">
               <span className="rank-position">{index + 1}.</span> &nbsp;&nbsp;
               <span className="user-id">{user.userid}</span>
-              <span className="user-score">점수: {user.score}</span>
+              <span className="user-score">POINT: {user.score}</span>
             </div>
-        ))}
+          ))}
         </div>
         <div className="Button-Container">
           <div className="Button-Item">
