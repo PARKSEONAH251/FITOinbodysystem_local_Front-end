@@ -63,52 +63,56 @@ export default function RecordBody() {
   };
 
   useEffect(() => {
+    // 현재 로그인된 유저 확인
     fetch(`http://${config.SERVER_URL}/login/validate`, {
       method: "GET",
-      credentials: "include", // 쿠키 자동 포함
+      credentials: "include",
     })
       .then((response) => {
         if (!response.ok) throw new Error("Unauthorized");
         return response.json();
       })
       .then((data) => {
-        console.log("로그인 상태 확인 성공:", data);
-        useridRef.current = data.useridRef;
-        sessionStorage.setItem("userid", data.userid);
-        const init = async () => {
-          await generationJwt();
-        };
-        init();
+        console.log("로그인 확인 성공:", data);
+        setUserid(data.userid);
       })
+      .catch(() => {
+        console.warn("인증 실패. 로그인 페이지로 이동");
+        navigate("/login");
+      });
   }, [navigate]);
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const userBodyInfo = {
-      userid,
+    const userBodyInfoDTO = {
+      userid: userid,
       height: parseFloat(height),
       weight: parseFloat(weight),
       fatpercentage: parseFloat(fatpercentage),
     };
 
 
-    console.log("📌 보내는 데이터:", userBodyInfo);
+    console.log("📌 보내는 데이터:", userBodyInfoDTO);
 
     try {
-      const response = await fetch(`http://${config.SERVER_URL}/upload/recorduserbody`, {
-        method: "POST",
-        credentials: "include", // 쿠키 포함 요청
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userBodyInfo),
-      });
+      const response = await fetch(
+        `http://${config.SERVER_URL}/userinfobody/recorduserbody`,
+        {
+          method: "POST",
+          credentials: "include", // 쿠키 포함 요청
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userBodyInfoDTO),
+        }
+      );
+      console.log("📌 보내는 데이터:", userBodyInfoDTO);
 
       if (response.ok) {
         alert("신체 정보가 저장되었습니다! 메인 페이지로 이동합니다.");
-        navigate("/graph");
+        navigate("/main");
       } else {
         alert("신체 정보 저장 실패! 다시 시도해주세요.");
       }
