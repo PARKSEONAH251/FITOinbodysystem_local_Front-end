@@ -36,6 +36,7 @@ export default function Login() {
 
         alert("로그인 성공!");
         sessionStorage.setItem("userid", userid); 
+        console.log("userid:", sessionStorage.getItem("userid"));
         navigate("/main"); //메인 페이지 이동
       } else if (response.status === 403) {
         // 로그인 차단 (5회 이상 실패)

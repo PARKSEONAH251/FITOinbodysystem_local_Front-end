@@ -8,7 +8,7 @@ import "../Style/main.css";
 export default function Main() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-    const [jwtString, setJwtString] = useState(""); // JWT 문자열을 위한 상태 추가
+  const [jwtString, setJwtString] = useState(""); // JWT 문자열을 위한 상태 추가
   const useridRef = useRef(sessionStorage.getItem("userid"));
 
   const swipeHandlers = useSwipeable({
@@ -69,8 +69,9 @@ export default function Main() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ userid: useridRef.current }),
+          body: JSON.stringify({ userid: sessionStorage.getItem("userid") }),
         }
+        // , console.log("useridRef.current:", sessionStorage.getItem("userid"))
       );
 
       if (!response.ok) {
@@ -81,7 +82,7 @@ export default function Main() {
       const jwtString = await response.text();
       setJwtString(jwtString); // 상태 업데이트
 
-      console.log("받은 JWT:", jwtString);
+      console.log("genetate 받은 JWT:", jwtString);
       // 이제 jwtString 변수를 사용하여 필요한 작업을 수행할 수 있습니다.
     } catch (error) {
       console.error("JWT 생성 중 에러 발생:", error);

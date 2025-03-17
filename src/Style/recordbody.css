@@ -1,0 +1,158 @@
+.RecordBody_Container {
+    position: relative;
+    width: 360px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 50px auto;
+    background: transparent;
+    padding: 20px;
+    margin-top: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.RecordBodyImage{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.RecordBodyTitle{
+  font-family: 'ThinkBold', sans-serif;
+  font-size: 32px;
+  position: absolute;  /* 고정된 위치로 설정 */
+  top: 30px;       /* 상단에서 100px 아래로 위치 */
+  left: 50%;        /* 화면 가로 중앙에 배치 */
+  transform: translateX(-50%); /* 정확한 중앙 정렬을 위한 오프셋 */
+  z-index: 2;         
+  color: white;
+  padding-bottom: 5px;  /* 텍스트와 밑줄 사이 간격 설정 */
+  border-bottom: 4px solid #C9F439; /* 밑줄 색상과 두께 설정 */
+  font-weight: bold;
+}
+
+.RecordBody_Title{
+    font-family: "Bangers", 'system-ui';
+    font-size: 40px;
+    margin-bottom: 30px;
+    z-index: 3;
+    color: white;
+}
+
+.RecordBodyvector{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+}
+
+.gender{
+    display: flex; /* 가로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    gap: 10px; /* 요소 간 간격 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    font-family: 'Agdasima', sans-serif;
+    font-size: 17px;
+    z-index: 3;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* 기본 라디오 버튼 숨기기 */
+input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #fff; /* 기본 테두리 */
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+/* 선택되었을 때 스타일 변경 */
+input[type="radio"]:checked {
+    background-color: rgb(255, 255, 255); /* 체크 시 배경색 변경 */
+}
+
+/* 라디오 버튼 내부에 체크 표시 (옵션) */
+input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+/* 선택되었을 때 체크 표시 보이기 */
+input[type="radio"]:checked::before {
+    opacity: 1;
+}
+
+
+.Height, .Weight,
+.Fat {
+    font-family: 'Agdasima', sans-serif;
+    font-size: 15px;
+    color: white;
+    display: block;
+    text-align: left; 
+    margin-top: 20px;
+}
+
+.RecordBody_Submit_Button{
+    font-family: 'Agdasima', sans-serif;
+    font-size: 20px; /* Adjusted to match login button size */
+    width: 107%;
+    height: 15%;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(31, 31, 31);
+    color: white;
+}
+
+.Button-Container {
+    display: flex;
+    justify-content: space-evenly;  /* 버튼들 간의 간격을 일정하게 나누기 */
+    width: 100%;
+    position: absolute;  /* 화면 중앙에 고정 */
+    top: 93%;             /* 화면 세로 중앙에 위치 */
+    left: 50%;            /* 화면 가로 중앙에 위치 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위한 보정 */
+    z-index: 4;
+}
+  
+.Button-Item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* 아이콘과 텍스트를 세로로 정렬 */
+    margin: 10px;
+}
+  
+.ButtonImage {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+  
+.Span {
+    font-size: 10px;
+    color: white;
+    text-align: center;
+    margin-top: 5px;
+}
+  
+.ButtonImage:hover {
+    opacity: 0.7;
+}

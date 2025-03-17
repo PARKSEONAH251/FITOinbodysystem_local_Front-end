@@ -23,7 +23,7 @@ export default function MealTimingselect() {
     const navigateFood=() => {navigate("/MealTimingselect");};
     const navigateGraph = () => {navigate("/Graph")};
     const handleLogout = async () => {
-        await fetch(`http://${config.SERVER_URL}/login/logout`, {
+        await fetch(`http://${config.SERVER_URL}/request/logout`, {
             method: "POST",
             credentials: "include",
         });

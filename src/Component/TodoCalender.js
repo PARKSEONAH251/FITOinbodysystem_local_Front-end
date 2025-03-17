@@ -13,7 +13,7 @@ export default function TodoCalender() {
   // 네비게이션 함수
   const navigateMain = () => navigate("/main");
   const navigateToRecordBody = () => navigate("/recodbody");
-  const navigateFood = () => navigate("/FoodSearchR");
+  const navigateFood = () => navigate("/MealTimingselect");
   const navigateGraph = () => navigate("/Graph");
 
   // 로그아웃 처리
@@ -94,8 +94,8 @@ export default function TodoCalender() {
           id="date"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
-          min={Math.min(...availableDates)}
-          max={Math.max(...availableDates)}
+          min={availableDates.size > 0 ? new Date([...availableDates].sort()[0]).toISOString().split("T")[0] : getTodayDate()}
+          max={availableDates.size > 0 ? new Date([...availableDates].sort().reverse()[0]).toISOString().split("T")[0] : getTodayDate()}
           list="available-dates"
         />
         <datalist id="available-dates">
