@@ -18,7 +18,7 @@ export default function TodoCalender() {
 
   // 로그아웃 처리
   const handleLogout = async () => {
-    await fetch(`http://${config.SERVER_URL}/request/logout`, {
+    await fetch(`http://${config.SERVER_URL}/login/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -36,7 +36,7 @@ export default function TodoCalender() {
   useEffect(() => {
     setSelectedDate(getTodayDate()); // 오늘 날짜로 기본 설정
 
-    fetch(`http://${config.SERVER_URL}/request/validate`, {
+    fetch(`http://${config.SERVER_URL}/login/validate`, {
       method: "GET",
       credentials: "include",
     })
@@ -48,7 +48,7 @@ export default function TodoCalender() {
         console.log("로그인 상태 확인 성공:", data);
         setUserid(data.userid);
 
-        return fetch(`http://${config.SERVER_URL}/request/diet-records/${data.userid}`, {
+        return fetch(`http://${config.SERVER_URL}/food/diet-records/${data.userid}`, {
           method: "GET",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -125,9 +125,6 @@ export default function TodoCalender() {
           <p>📭 해당 날짜에 기록이 없습니다.</p>
         )}
       </div>
-
-      {/* 🔍 음식 검색 버튼 */}
-      <button onClick={() => navigate("/food")}>음식 검색</button>
       
       {/* 하단 네비게이션 버튼 */}
       <div className="button-container">

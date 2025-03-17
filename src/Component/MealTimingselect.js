@@ -23,7 +23,7 @@ export default function MealTimingselect() {
     const navigateFood=() => {navigate("/MealTimingselect");};
     const navigateGraph = () => {navigate("/Graph")};
     const handleLogout = async () => {
-        await fetch(`http://${config.SERVER_URL}/request/logout`, {
+        await fetch(`http://${config.SERVER_URL}/login/logout`, {
             method: "POST",
             credentials: "include",
         });
@@ -36,7 +36,7 @@ export default function MealTimingselect() {
       };
       
     useEffect(() => {
-        fetch(`http://${config.SERVER_URL}/request/validate`, {
+        fetch(`http://${config.SERVER_URL}/login/validate`, {
             method: "GET",
             credentials: "include",
         })
@@ -47,7 +47,7 @@ export default function MealTimingselect() {
             .then((data) => {
                 console.log("로그인 상태 확인 성공:", data);
                 setUserid(data.userid);
-                return fetch(`http://${config.SERVER_URL}/request/diet-records/${data.userid}`, {
+                return fetch(`http://${config.SERVER_URL}/food/diet-records/${data.userid}`, {
                     method: "GET",
                     credentials: "include",
                     headers: { "Content-Type": "application/json" },

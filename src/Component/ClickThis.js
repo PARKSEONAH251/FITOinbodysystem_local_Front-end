@@ -3,7 +3,7 @@ import config from "../config";
 const ClickThis = () => {
   const handleClick = async () => {
     try {
-      const response = await fetch(`http://${config.SERVER_URL}/request/up`, {
+      const response = await fetch(`http://${config.SERVER_URL}/food/up`, {
         credentials: "include",
       });
 

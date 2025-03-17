@@ -8,6 +8,7 @@ import "../Style/main.css";
 export default function Main() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
+    const [jwtString, setJwtString] = useState(""); // JWT 문자열을 위한 상태 추가
   const useridRef = useRef(sessionStorage.getItem("userid"));
 
   const swipeHandlers = useSwipeable({
@@ -22,7 +23,7 @@ export default function Main() {
 
   // 로그아웃 처리
   const handleLogout = async () => {
-    await fetch(`http://${config.SERVER_URL}/request/logout`, {
+    await fetch(`http://${config.SERVER_URL}/login/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -58,10 +59,38 @@ export default function Main() {
     "/image/advertisement_gym.png",
     "/image/advertisement_main.png",
   ];
+  const generationJwt = async () => {
+    try {
+      const response = await fetch(
+        `http://${config.SERVER_URL}/userinfo/generation`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userid: useridRef.current }),
+        }
+      );
 
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      // JWT 문자열을 받습니다. 서버가 Content-Type을 'text/plain'으로 설정했다고 가정합니다.
+      const jwtString = await response.text();
+      setJwtString(jwtString); // 상태 업데이트
+
+      console.log("받은 JWT:", jwtString);
+      // 이제 jwtString 변수를 사용하여 필요한 작업을 수행할 수 있습니다.
+    } catch (error) {
+      console.error("JWT 생성 중 에러 발생:", error);
+    }
+  };
+  
   // 로그인 상태 확인 후 `userid` 가져오기
   useEffect(() => {
-    fetch(`http://${config.SERVER_URL}/request/validate`, {
+    fetch(`http://${config.SERVER_URL}/login/validate`, {
       method: "GET",
       credentials: "include", // 쿠키 자동 포함
     })
@@ -73,25 +102,11 @@ export default function Main() {
         console.log("로그인 상태 확인 성공:", data);
         useridRef.current = data.useridRef;
         sessionStorage.setItem("userid", data.userid);
-
-        // 사용자 신체 기록 가져오기
-        // return fetch(`http://${config.SERVER_URL}/download/recentuserbody/${data.userid}`, {
-        //   method: "GET",
-        //   credentials: "include",
-        //   headers: { "Content-Type": "application/json" },
-        // });
+        const init = async () => {
+          await generationJwt();
+        };
+        init();
       })
-      // .then((response) => response.json())
-      // .then((bodyData) => {
-      //   console.log("신체 기록 응답 데이터:", bodyData);
-      //   setBodyRecod(bodyData);
-      //   setLoading(false);
-      // })
-      // .catch(() => {
-      //   console.warn("인증 실패. 로그인 페이지로 이동");
-      //   sessionStorage.removeItem("useridRef");
-      //   navigate("/login");
-      // });
   }, [navigate]);
 
   return (

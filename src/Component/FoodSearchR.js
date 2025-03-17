@@ -91,7 +91,7 @@ export default function FoodSearchR() {
 
     console.log("전송할 데이터:", foodData); // 전송 전에 확인
 
-    fetch(`http://${config.SERVER_URL}/request/saveFoodRecord`, {
+    fetch(`http://${config.SERVER_URL}/food/saveFoodRecord`, {
       method: "POST",
       credentials: "include", // 쿠키 포함 요청
       headers: {

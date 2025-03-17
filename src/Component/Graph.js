@@ -18,7 +18,7 @@ export default function Graph() {
   const navigateFood=() => {navigate("/MealTimingselect");};
   const navigateRank = () => {navigate("/rank");};
   const handleLogout = async () => {
-    await fetch(`http://${config.SERVER_URL}/request/logout`, {
+    await fetch(`http://${config.SERVER_URL}/login/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -44,7 +44,7 @@ export default function Graph() {
   // }, [userid]);
 
   useEffect(() => {
-    fetch(`http://${config.SERVER_URL}/request/validate`, {
+    fetch(`http://${config.SERVER_URL}/login/validate`, {
       method: "GET",
       credentials: "include", // 쿠키 자동 포함
     })
@@ -58,7 +58,7 @@ export default function Graph() {
         sessionStorage.setItem("userid", data.userid);
 
         // 사용자 신체 기록 가져오기
-        return fetch(`http://${config.SERVER_URL}/download/recentuserbody/${data.userid}`, {
+        return fetch(`http://${config.SERVER_URL}/userinfobody/recentuserbody/${data.userid}`, {
           method: "GET",
           credentials: "include",
           headers: { "Content-Type": "application/json" },

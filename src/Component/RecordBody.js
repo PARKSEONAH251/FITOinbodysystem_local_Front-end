@@ -16,7 +16,7 @@ export default function RecordBody() {
   const navigateGraph = () => {navigate("/Graph")};
   const navigateRank = () => {navigate("/rank");};
   const handleLogout = async () => {
-    await fetch(`http://${config.SERVER_URL}/request/logout`, {
+    await fetch(`http://${config.SERVER_URL}/login/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -24,7 +24,7 @@ export default function RecordBody() {
 
   useEffect(() => {
     // 현재 로그인된 유저 확인
-    fetch(`http://${config.SERVER_URL}/request/validate`, {
+    fetch(`http://${config.SERVER_URL}/login/validate`, {
       method: "GET",
       credentials: "include",
     })
@@ -55,7 +55,7 @@ export default function RecordBody() {
     console.log("📌 보내는 데이터:", userBodyInfo);
 
     try {
-      const response = await fetch(`http://${config.SERVER_URL}/upload/recorduserbody`, {
+      const response = await fetch(`http://${config.SERVER_URL}/userinfobody/recorduserbody`, {
         method: "POST",
         credentials: "include", // 쿠키 포함 요청
         headers: {

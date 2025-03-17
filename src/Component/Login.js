@@ -19,9 +19,7 @@ export default function Login() {
     };
 
     try {
-      const response = await fetch(
-        `http://${config.SERVER_URL}/request/login`,
-        {
+      const response = await fetch(`http://${config.SERVER_URL}/login/login`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +32,7 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
 
-        console.log("Login successful");
+        console.log(data);
 
         alert("로그인 성공!");
         sessionStorage.setItem("userid", userid); 
