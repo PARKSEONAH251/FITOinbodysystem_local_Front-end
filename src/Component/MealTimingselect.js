@@ -18,11 +18,19 @@ export default function MealTimingselect() {
         .toISOString()
         .split("T")[0];
     };
+    
     const navigateMain = () => {navigate("/main");};
+
     const navigateToRecordBody = () => {navigate("/recodbody");};
+
     const navigateFood=() => {navigate("/MealTimingselect");};
+
     const navigateGraph = () => {navigate("/Graph")};
-    const navigateFoodSearchR = () => {navigate("/FoodSearchR")}
+
+    const navigateFoodSearchR = () => {navigate("/FoodSearchR")};
+
+    const navigatetodo = () => {navigate("/todo")};
+
     const handleLogout = async () => {
         await fetch(`http://${config.SERVER_URL}/request/logout`, {
             method: "POST",
@@ -180,7 +188,7 @@ export default function MealTimingselect() {
             <button className="greenbutton"></button>
             <span className="img-alt-text">Check meal details</span>
 
-            <button className="Yellowbutton"></button>
+            <button className="Yellowbutton" onClick={navigatetodo}></button>
             <span className="img-alt-text-yellow">Calendar shortcuts</span>
           </div>
           {/* 기타 UI 구성 */}
