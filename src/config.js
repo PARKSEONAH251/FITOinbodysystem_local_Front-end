@@ -1,5 +1,5 @@
 const config = {
-    SERVER_URL: "172.30.103.171:8080",
+    SERVER_URL: "192.168.68.76:8080",
   };
   
   export default config;
