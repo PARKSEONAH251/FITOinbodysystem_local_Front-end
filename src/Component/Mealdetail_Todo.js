@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import config from "../config";
 import "../Style/TodoCalender.css";
 
-export default function TodoCalender() {
+export default function Mealdetail_Todo() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState([]);
   const [userid, setUserid] = useState("");

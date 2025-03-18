@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'react-calendar/dist/Calendar.css';
 import "../Style/MealTimingselect.css"
 import config from "../config";
+import MealCalendar from "./MealCalender";
 
 export default function MealTimingselect() {
     const navigate = useNavigate();
@@ -29,7 +30,9 @@ export default function MealTimingselect() {
 
     const navigateFoodSearchR = () => {navigate("/FoodSearchR")};
 
-    const navigatetodo = () => {navigate("/todo")};
+    const navigateCalender = () => {navigate("/Calender")};
+    
+    const navigateTodo = () => {navigate("/Todo")};
 
     const handleLogout = async () => {
         await fetch(`http://${config.SERVER_URL}/request/logout`, {
@@ -185,11 +188,13 @@ export default function MealTimingselect() {
                   )}
               </div>
             </div>
-            <button className="greenbutton"></button>
-            <span className="img-alt-text">Check meal details</span>
+            <button className="greenbutton" onClick={navigateTodo}>
+              <span className="img-alt-text">Check meal details</span>
+            </button>
 
-            <button className="Yellowbutton" onClick={navigatetodo}></button>
-            <span className="img-alt-text-yellow">Calendar shortcuts</span>
+            <button className="Yellowbutton" onClick={navigateCalender}>
+              <span className="img-alt-text-yellow">Calendar shortcuts</span>
+            </button>
           </div>
           {/* 기타 UI 구성 */}
           <div className="Button-Container">

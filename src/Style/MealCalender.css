@@ -1,0 +1,192 @@
+.MealCalender_Container{
+    position: relative;
+    width: 360px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 50px auto;
+    background: transparent;
+    padding: 20px;
+    margin-top: 20%;
+    border-radius: 10px;
+}
+
+.meal-calendar {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 📌 입체 효과 */
+    text-align: center;
+}
+
+
+.MealCalender_image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+}
+
+.CalenderRectangle{
+    position: absolute;
+    z-index: -1;
+}
+
+.MealCalender_title{
+    font-family: 'ThinkBold', sans-serif;
+    font-size: 32px;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: white;
+    border-bottom: 4px solid #C9F439;
+    font-weight: bold;
+}
+  
+  /* 월 변경 헤더 */
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .calendar-header h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* 요일 헤더 */
+  .weekdays {
+    font-family: "Merriweather", serif;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+  }
+  
+  .weekdays div {
+    padding: 10px 0;
+  }
+  
+  /* 날짜 컨테이너 */
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  /* 날짜 버튼 */
+  .calendar-day {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    background-color: #2E2E3A;
+    color: #E2ECC9;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* 날짜 버튼: 선택된 날짜 */
+  .calendar-day.selected {
+    background-color: #E5EE2C;
+    color: #3f3f3f;
+  }
+  
+  /* 날짜 버튼: 데이터가 있는 날짜 */
+  .calendar-day.has-data {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* 비어있는 날짜 칸 */
+  .empty-day {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* 📌 월 변경 헤더 스타일 */
+.calendar-header {
+    font-family: "Merriweather", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 중앙 정렬 */
+    gap: 15px; /* 버튼과 텍스트 간격 */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  /* 📌 이전/다음 월 변경 버튼 */
+  .calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #fff;
+  }
+  
+  .calendar-header button:hover {
+    color: #E2ECC9;
+  }
+  
+  /* 선택된 날짜 정보 박스 */
+.selected-date-container {
+    width: 300px;
+    height: 70px;
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    background: #383C41;
+  }
+  
+  /* 선택된 날짜 텍스트 */
+  .selected-date-text {
+    position: absolute;
+    margin-top: 10px;
+    color: #e7e7e7;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  
+  /* 식사 데이터 텍스트 */
+  .meal-data-text {
+    font-weight: bold;
+    color: #e7e7e7;
+    margin-top: 8px;
+  }
+  
+  /* 칼로리 데이터 텍스트 */
+  .calorie-data-text {
+    color: #e7e7e7;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  /* 기록 없음 메시지 */
+  .no-record-text {
+    position: absolute;
+    color: #e7e7e7;
+    font-style: italic;
+    font-size: 13;
+    margin-top: 33px;
+  }
+  

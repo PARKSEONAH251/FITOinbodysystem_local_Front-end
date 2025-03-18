@@ -9,10 +9,12 @@ import Main from "./Component/Main"; // 메인 화면 컴포넌트
 import RecordBody from "./Component/RecordBody";
 import Graph from "./Component/Graph";
 import RankPage from "./Component/RankPage";
-import TodoCalender from "./Component/TodoCalender";
+import Mealdetail_Todo from "./Component/Mealdetail_Todo";
 import ClickThis from "./Component/ClickThis";
 import FoodSearchR from "./Component/FoodSearchR";
-import MealTimingselect from "./Component/MealTimingselect";
+import MealTimingselect from "./Component/MealTimingselect"; 
+import MealCalender from "./Component/MealCalender";
+
 const App = () => {
   return (
     <Router>
@@ -23,11 +25,15 @@ const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/recodbody" element={<RecordBody />} />
         <Route path="/rank" element={<RankPage />} />
-        <Route path="/food" element={<FoodSearchR />} />
-        <Route path="/todo" element={<TodoCalender />} />
+        <Route path="/Calender" element={<MealCalender/>}/>
+        {/* 캘린더 페이지 */}
+        <Route path="/Todo" element={<Mealdetail_Todo />} />
+        {/* 음식데이터 보여줌줌 */}
         <Route path="/ClickThis" element={<ClickThis />} />
+        {/* 음식데이터베이스 가지고옴옴 */}
         <Route path="/graph" element={<Graph />} />
-        <Route path="/FoodSearchR" element={<FoodSearchR />} />
+        <Route path="/FoodSearchR" element={<FoodSearchR />} /> 
+        {/* 음식 검색 데이터터 */}
         <Route path="/MealTimingselect" element={<MealTimingselect/>}/>
       </Routes>
     </Router>
