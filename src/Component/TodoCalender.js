@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
-import "../Style/TodoCalender.css";
+import styles from "../Style/TodoCalender.module.css";
 
 export default function TodoCalender() {
   const navigate = useNavigate();
@@ -82,12 +82,12 @@ export default function TodoCalender() {
   });
 
   return (
-    <div className="Main_Container">
-      <img src="/image/black.png" alt="Background" className="MainImage" />
-      <h1 className="maintitle">FitEnd</h1>
+    <div className={styles.Main_Container}>
+      <img src="/image/black.png" alt="Background" className={styles.MainImage} />
+      <h1 className={styles.maintitle}>FitEnd</h1>
       <h2>내 식단 기록</h2>
       {/* 📅 날짜 선택 */}
-      <div className="date-selector">
+      <div className={styles.date_selector}>
         <label htmlFor="date">날짜 선택: </label>
         <input
           type="date"
@@ -106,10 +106,10 @@ export default function TodoCalender() {
       </div>
 
       {/* 📂 식단 기록 리스트 */}
-      <div className="food-detail-container">
+      <div className={styles.food_detail_container}>
         {filteredData.length > 0 ? (
           filteredData.map((record, index) => (
-            <div key={index} className="diet-record">
+            <div key={index} className={styles.diet_record}>
               <p>📌 식사: {record.dietMemo || "메모 없음"}</p>
               <p>📅 날짜: {record.timestamp ? new Date(record.timestamp).toLocaleDateString("ko-KR") : "날짜 없음"}</p>
               <p>🍽️ 음식: {record.foodNm || "음식 없음"}</p>
@@ -127,7 +127,7 @@ export default function TodoCalender() {
       </div>
       
       {/* 하단 네비게이션 버튼 */}
-      <div className="button-container">
+      <div className={styles.button_container}>
         {[
           { img: "HOME.png", alt: "Main", action: navigateMain, label: "Main" },
           { img: "PAPAR.png", alt: "Paper", action: navigateToRecordBody, label: "Paper" },
@@ -135,8 +135,8 @@ export default function TodoCalender() {
           { img: "Vector8.png", alt: "Food", action: navigateFood, label: "Food" },
           { img: "PEOPLE.png", alt: "Logout", action: handleLogout, label: "Logout" },
         ].map(({ img, alt, action, label }, idx) => (
-          <div key={idx} className="button-item">
-            <img src={`/image/${img}`} alt={alt} className="buttonimage" onClick={action} />
+          <div key={idx} className={styles.button_item}>
+            <img src={`/image/${img}`} alt={alt} className={styles.buttonimage} onClick={action} />
             <span className="span">{label}</span>
           </div>
         ))}

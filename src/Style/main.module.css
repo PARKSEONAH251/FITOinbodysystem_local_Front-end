@@ -1,5 +1,5 @@
 .Main_Container {
-  position: relative; /* Parents needs relative positioning */
+  position: relative;
   width: 360px;
   height: 700px;
   display: flex;
@@ -11,10 +11,10 @@
   background: transparent;
   padding: 20px;
   margin-top: 200px;
-  overflow: visible; /* Allow scrollable content */
+  overflow: visible;
   border-radius: 10px;
 }
-  
+
 .MainImage {
   width: 100%;
   height: 100%;
@@ -22,26 +22,25 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; 
+  z-index: -1;
 }
 
 .maintitle {
   font-family: 'ThinkBold', sans-serif;
   font-size: 50px;
-  position: absolute;  /* 고정된 위치로 설정 */
-  top: 30px;       /* 상단에서 230px 아래로 위치 */
-  left: 50%;        /* 화면 가로 중앙에 배치 */
-  transform: translateX(-50%); /* 정확한 중앙 정렬을 위한 오프셋 */
-  z-index: 1;         
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
   color: white;
-  padding-bottom: 5px;  /* 텍스트와 밑줄 사이 간격 설정 */
-  border-bottom: 4px solid #C9F439; /* 밑줄 색상과 두께 설정 */
+  padding-bottom: 5px;
+  border-bottom: 4px solid #C9F439;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-  
-.anime_container{
+.anime_container {
   width: 100%;
   max-width: 800px;
   margin-top: -25px;
@@ -50,7 +49,7 @@
   touch-action: none;
 }
 
-.slide{
+.slide {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,13 +74,13 @@
 
 .prev,
 .next {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .optionImage {
@@ -93,20 +92,20 @@
   margin-right: 0px;
 }
 
-.Button-Container {
+.Button_Container {
   display: flex;
-  justify-content: space-evenly;  /* 버튼들 간의 간격을 일정하게 나누기 */
+  justify-content: space-evenly;
   width: 100%;
-  position: absolute;  /* 화면 중앙에 고정 */
-  top: 93%;             /* 화면 세로 중앙에 위치 */
-  left: 50%;            /* 화면 가로 중앙에 위치 */
-  transform: translate(-50%, -50%); /* 정확한 중앙 정렬을 위한 보정 */
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.Button-Item {
+.Button_Item {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* 아이콘과 텍스트를 세로로 정렬 */
+  align-items: center;
   margin: 10px;
 }
 

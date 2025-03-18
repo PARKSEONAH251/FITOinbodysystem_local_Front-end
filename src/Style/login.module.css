@@ -5,7 +5,7 @@
     font-style: normal;
 }
 
-.Main_Container {
+.mainContainer {
     position: relative;
     width: 360px;
     height: 700px;
@@ -22,7 +22,7 @@
     border-radius: 10px;
 }
 
-.MainImage {
+.mainImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -32,7 +32,7 @@
     z-index: 0;
 }
 
-.MainImage_Vector{
+.mainImageVector{
     width: 100%;
     height: 87%;
     position: absolute;
@@ -42,7 +42,7 @@
     z-index: 2;
 }
 
-.Main_Title {
+.mainTitle {
     font-family: 'ThinkBold', sans-serif;
     font-size: 50px;
     font-weight: normal;
@@ -53,14 +53,14 @@
     z-index: 3;
 }
 
-.Main_Title::before {
+.mainTitle::before {
     width: 120%;
     margin-left: -15px;
     content: 'Welcome to'; /* 첫 번째 줄 텍스트 */
     display: block; /* 줄 바꿈을 적용 */
 }
 
-.Main_Title::after {
+.mainTitle::after {
     content: 'FitEnd'; /* 'FitEnd'를 두 번째 줄로 표시 */
     display: block; /* 줄 바꿈을 적용 */
 }
@@ -73,11 +73,14 @@ form {
     z-index: 3;
 }
 
-.INPUTTEXT1,
-.INPUTTEXT2 {
+.inputGroup {
+    width: 100%;
+    margin: 5px 0 15px;
+}
+
+.input {
     width: 100%;
     padding: 10px;
-    margin: 5px 0 15px;
     border: none;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.9); 
@@ -85,22 +88,16 @@ form {
     font-size: 14px;
 }
 
-.INPUTTEXT1,
-.INPUTTEXT2 ::placeholder{
+.input::placeholder {
     color: rgba(0, 0, 0, 0.5);
 }
 
-.USERLOGINID_EMAIL{
+.label {
     font-family: 'Agdasima', sans-serif;
     margin-right: 87%;
 }
 
-.USERLOGIN_PASSWORD {
-    font-family: 'Agdasima', sans-serif;
-    margin-right: 75%;
-}
-
-.LOGIN_BUTTON{
+.loginButton {
     width: 107%;
     height: 20%;
     margin-top: 20px;
@@ -110,7 +107,18 @@ form {
     color: white;
 }
 
-.SIGNUP_BUTTON, .BUTTON{
+.signupButton, .button {
     font-family: 'Agdasima', sans-serif;
+    margin-top: 10px;
+}
+
+.signupContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 14px;
     margin-top: 10px;
 }

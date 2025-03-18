@@ -1,7 +1,8 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../config";
-import "../Style/recordbody.css"
+import styles from "../Style/recordbody.module.css"; // Import CSS module
+
 export default function RecordBody() {
   const navigate = useNavigate();
   const [userid, setUserid] = useState("");
@@ -11,15 +12,16 @@ export default function RecordBody() {
   const [weight, setWeight] = useState("");
   const [fatpercentage, setFatPercentage] = useState("");
   const useridRef = useRef(sessionStorage.getItem("userid"));
-  //RADIO버튼 이벤트 처리
+
+  // RADIO버튼 이벤트 처리
   const handleSexChange = (event) => {
     setSelectedSex(event.target.value);
-  }
+  };
 
-  const navigateMain = () => {navigate("/main");};
-  const navigateToRecordBody = () => {navigate("/recodbody");};
-  const navigateFood=() => {navigate("/FoodSearchR");};
-  const navigateGraph = () => {navigate("/Graph")};
+  const navigateMain = () => { navigate("/main"); };
+  const navigateToRecordBody = () => { navigate("/recodbody"); };
+  const navigateFood = () => { navigate("/FoodSearchR"); };
+  const navigateGraph = () => { navigate("/Graph"); };
 
   // 로그아웃 처리
   const handleLogout = async () => {
@@ -44,19 +46,15 @@ export default function RecordBody() {
           },
           body: JSON.stringify({ userid: sessionStorage.getItem("userid") }),
         }
-        // , console.log("useridRef.current:", sessionStorage.getItem("userid"))
       );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
-      // JWT 문자열을 받습니다. 서버가 Content-Type을 'text/plain'으로 설정했다고 가정합니다.
       const jwtString = await response.text();
       setJwtString(jwtString); // 상태 업데이트
-
       console.log("genetate 받은 JWT:", jwtString);
-      // 이제 jwtString 변수를 사용하여 필요한 작업을 수행할 수 있습니다.
     } catch (error) {
       console.error("JWT 생성 중 에러 발생:", error);
     }
@@ -82,7 +80,6 @@ export default function RecordBody() {
       });
   }, [navigate]);
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -92,7 +89,6 @@ export default function RecordBody() {
       weight: parseFloat(weight),
       fatpercentage: parseFloat(fatpercentage),
     };
-
 
     console.log("📌 보내는 데이터:", userBodyInfoDTO);
 
@@ -123,62 +119,64 @@ export default function RecordBody() {
   };
 
   return (
-    <div className="RecordBody_Container">
+    <div className={styles.RecordBody_Container}>
       <img
         src={selectedSex === "1" ? "/image/man.png" : "/image/woman.png"}
         alt="backgroundimage"
-        className="RecordBodyImage"
+        className={styles.RecordBodyImage}
       />
-      <img src="/image/Rectangle22.png" alt="backgroudvector" className="RecordBodyvector"></img>
-      <a className="RecordBodyTitle">FitEnd</a>
-      <h2 className="RecordBody_Title">{selectedSex === "1" ? "MAN BMI INPUT" : selectedSex === "2" ? "WONMAN BMI INPUT" : "Please select your gender"}</h2>
+      <img src="/image/Rectangle22.png" alt="backgroudvector" className={styles.RecordBodyvector} />
+      <a className={styles.RecordBodyTitle}>FitEnd</a>
+      <h2 className={styles.RecordBody_Title}>
+        {selectedSex === "1" ? "MAN BMI INPUT" : selectedSex === "2" ? "WOMAN BMI INPUT" : "Please select your gender"}
+      </h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <div className="gender">
+          <div className={styles.gender}>
             <label>
-              <input type="radio" name="sex" value="1" onChange={handleSexChange}/>
+              <input type="radio" name="sex" value="1" onChange={handleSexChange} />
             </label>
-            <label className="Radio_button_Man">MAN</label>
+            <label className={styles.Radio_button_Man}>MAN</label>
             <label>
-              <input type="radio" name="sex" value="2" onChange={handleSexChange}/>
+              <input type="radio" name="sex" value="2" onChange={handleSexChange} />
             </label>
-            <label className="Radio_button_Woman">WOMAN</label>
+            <label className={styles.Radio_button_Woman}>WOMAN</label>
           </div>
-            <label className="Height">Height (cm)</label>
-            <input className="input_text" type="number" step="0.1" value={height} onChange={(e) => setHeight(e.target.value)} required />
-            <label className="Weight">Weight (kg)</label>
-            <input className="input_text" type="number" step="0.1" value={weight} onChange={(e) => setWeight(e.target.value)} required />
-            <label className="Fat">Fat Percentage (%)</label>
-            <input className="input_text" type="number" step="0.1" value={fatpercentage} onChange={(e) => setFatPercentage(e.target.value)} required />
-          </div>
-          <button className="RecordBody_Submit_Button" type="submit" onClick={navigateGraph}>Submit</button>
-      </form>
-      <div className="Button-Container">
-          <div className="Button-Item">
-            <img src="/image/HOME.png" alt="Main" className="ButtonImage" onClick={navigateMain} />
-            <span className="Span">Main</span>
-          </div>
-
-          <div className="Button-Item">
-            <img src="/image/PAPAR.png" alt="Paper" className="ButtonImage" onClick={navigateToRecordBody} />
-            <span className="Span">Paper</span>
-          </div>
-
-          <div className="Button-Item">
-            <img src="/image/Vector7.png" alt="rank" className="ButtonImage" onClick={navigateGraph} />
-            <span className="Span">Graph</span>
-          </div>
-
-          <div className="Button-Item">
-            <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
-            <span className="Span">Food</span>
-          </div>
-
-          <div className="Button-Item">
-            <img src="/image/PEOPLE.png" alt="Logout" className="ButtonImage" onClick={handleLogout} />
-            <span className="Span">Logout</span>
-          </div>
+          <label className={styles.Height}>Height (cm)</label>
+          <input className={styles.input_text} type="number" step="0.1" value={height} onChange={(e) => setHeight(e.target.value)} required />
+          <label className={styles.Weight}>Weight (kg)</label>
+          <input className={styles.input_text} type="number" step="0.1" value={weight} onChange={(e) => setWeight(e.target.value)} required />
+          <label className={styles.Fat}>Fat Percentage (%)</label>
+          <input className={styles.input_text} type="number" step="0.1" value={fatpercentage} onChange={(e) => setFatPercentage(e.target.value)} required />
         </div>
+        <button className={styles.RecordBody_Submit_Button} type="submit" onClick={navigateGraph}>Submit</button>
+      </form>
+      <div className={styles.Button_Container}>
+        <div className={styles.Button_Item}>
+          <img src="/image/HOME.png" alt="Main" className={styles.ButtonImage} onClick={navigateMain} />
+          <span className={styles.Span}>Main</span>
+        </div>
+
+        <div className={styles.Button_Item}>
+          <img src="/image/PAPAR.png" alt="Paper" className={styles.ButtonImage} onClick={navigateToRecordBody} />
+          <span className={styles.Span}>Paper</span>
+        </div>
+
+        <div className={styles.Button_Item}>
+          <img src="/image/Vector7.png" alt="rank" className={styles.ButtonImage} onClick={navigateGraph} />
+          <span className={styles.Span}>Graph</span>
+        </div>
+
+        <div className={styles.Button_Item}>
+          <img src="/image/Vector8.png" alt="Food" className={styles.ButtonImage} onClick={navigateFood} />
+          <span className={styles.Span}>Food</span>
+        </div>
+
+        <div className={styles.Button_Item}>
+          <img src="/image/PEOPLE.png" alt="Logout" className={styles.ButtonImage} onClick={handleLogout} />
+          <span className={styles.Span}>Logout</span>
+        </div>
+      </div>
     </div>
   );
 }

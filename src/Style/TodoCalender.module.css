@@ -1,19 +1,46 @@
 .Main_Container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    color: white;
-  }
+  position: relative;
+  width: 360px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px auto;
+  background: transparent;
+  padding: 20px;
+  margin-top: 200px;
+  overflow: visible;
+  border-radius: 10px;
+}
+
+.MainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.maintitle {
+  font-family: 'ThinkBold', sans-serif;
+  font-size: 50px;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: white;
+  padding-bottom: 5px;
+  border-bottom: 4px solid #C9F439;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
   
-  .maintitle {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .food-detail-container {
+  .food_detail_container {
     width: 80%;
     max-height: 400px;
     overflow-y: auto;
@@ -30,7 +57,7 @@
     color: black;
   }
   
-  .button-container {
+  .button_container {
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -38,9 +65,10 @@
     width: 90%;
     left: 0px;
     bottom: 0;
+    color: white;
   }
   
-  .button-item {
+  .button_item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,29 +90,31 @@
     text-align: center;
     margin-top: 5px;
   }
-  .date-selector {
+  .date_selector {
   margin-bottom: 15px;
+  color: white;
 }
 
-.date-selector label {
+.date_selector label {
   font-size: 16px;
   margin-right: 10px;
 }
 
-.date-selector input {
+.date_selector input {
   padding: 5px;
   font-size: 16px;
 }
 
-.food-detail-container {
+.food_detail_container {
   max-height: 380px;
   overflow-y: auto;
 }
 
-.diet-record {
+.diet_record {
   background: #f9f9f9;
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  color: black;
 }

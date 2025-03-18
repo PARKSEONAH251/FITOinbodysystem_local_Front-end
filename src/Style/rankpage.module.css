@@ -1,3 +1,20 @@
+.Main_Container {
+  position: relative;
+  width: 360px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px auto;
+  background: transparent;
+  padding: 20px;
+  margin-top: 200px;
+  overflow: visible;
+  border-radius: 10px;
+}
+
 .RankPage_Container{
   position: relative; /* Parents needs relative positioning */
   width: 360px;
@@ -13,6 +30,36 @@
   margin-top: 200px;
   overflow: visible; /* Allow scrollable content */
   border-radius: 10px;
+}
+.backgroundstar{
+  position: absolute;  /* 부모 기준으로 고정 */
+  top: -20%;           /* 원하는 위치로 고정 */
+  left: -45px;          /* 원하는 위치로 고정 */
+  width: 500px;
+  z-index: 1;
+}
+
+.backgroundFrame4{
+  position: absolute;
+  top: -12.9%;
+  width: 390px;
+  z-index: 3;
+  justify-content: center;
+  display: flex;
+}
+.backgroundFrame3{
+  position: absolute;
+  top: -13.5%;
+  right: 2px;
+  width: 420px;
+  z-index: 3;
+}
+.backgroundFrame5{
+  position: absolute;
+  top: -13.5%;
+  left: 5px;
+  width: 420px;
+  z-index: 3;
 }
 
 .RecordBodyTitle{
@@ -31,11 +78,11 @@
 
 .RecordBodyMainTitle {
   position: absolute;  /* 화면의 특정 위치에 고정 */
-  margin-top: -90px;          /* 원하는 위치 설정 */
-  right: 30%;          /* 화면 가운데 정렬 */
+  margin-top: -39px;          /* 원하는 위치 설정 */
+  right: 20%;          /* 화면 가운데 정렬 */
   transform: translateX(-50%);
   z-index: 3;
-  font-size: 50px;
+  font-size: 28px;
   color: #fff;
   margin-right: 0;    /* 중앙 정렬을 위해 margin-right 제거 */
 }
@@ -47,17 +94,18 @@
   display: block;
 }
 
-.gender-buttons {
+.gender_buttons {
   position: absolute;
   left: 75%;
   margin-top: 85%; /* 화면 높이의 70% 위치 */
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
+  z-index: 5;
 }
 
-.gender-btn{
-  background: #444;
+.gender_btn{
+  background: #7e3a99;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -65,13 +113,13 @@
   cursor: pointer;
 }
 
-.gender-btn.active{
-  background: #C9F439;
-  color: black;
+.gender_btn.active{
+  background: #e7a9f3;
+  color: rgb(133, 51, 129);
 }
 
 /* 1~3등 프로필 영역 위치 고정 */
-.top-rank-container {
+.top_rank_container {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -86,33 +134,34 @@
 }
 
 /* 1등, 2등, 3등 프로필 정렬 */
-.rank-profile {
+.rank_profile {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 /* 1등 - 중앙 */
-.rank-1 {
-  transform: scale(1.7);
+.rank_1 {
+  transform: scale(1.85);
   order: 2; /* 가운데 배치 */
   margin-bottom: 20px;
 }
 
 /* 2등 - 왼쪽 */
-.rank-2 {
-  transform: scale(1.2);
+.rank_2 {
+  transform: scale(1.15);
   order: 1; /* 왼쪽 배치 */
 }
 
 /* 3등 - 오른쪽 */
-.rank-3 {
-  transform: scale(1.2);
+.rank_3 {
+  transform: scale(1.15);
   order: 3; /* 오른쪽 배치 */
 }
 
 /* gender-buttons 위치 고정 */
-.gender-buttons {
+.gender_buttons {
   position: absolute;
   top: 50px; /* 고정된 위치 유지 */
   left: 75%;
@@ -122,15 +171,20 @@
   z-index: 3; /* 랭킹 리스트보다 위에 위치 */
 }
 
+.genderbtn_title{
+  font-family: 'Agdasima', sans-serif;
+}
+
 .ranking_list {
+  font-family: 'Agdasima', sans-serif;
   width: 95%;
-  height: 250px; /* 고정된 높이 유지 */
+  height: 220px; /* 고정된 높이 유지 */
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute; /* 위치 고정 */
-  top: 350px; /* 원하는 위치에 정확히 배치 */
+  top: 410px; /* 원하는 위치에 정확히 배치 */
   left: 50%;
   transform: translateX(-50%);
   padding-top: 20px; /* 위쪽 여백 조정 */
@@ -139,27 +193,60 @@
 
 
 /* 기타 스타일 유지 */
-.rank-name {
+.rank_name {
   color: #fff;
 }
 
-.profile-image {
+.profile_image {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   background: gray;
 }
 
-.ranking-item {
+.ranking_item {
   display: flex;
   align-items: center;
-  width: 8%;
+  width: 80%;
   padding: 8px;
   justify-content: space-between;
   color: #fff;
 }
 
-.rank-position {
+.rank_position {
   font-weight: bold;
 }
+.Button_Container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: absolute;
+  top: 93%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
 
+.Button_Item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.ButtonImage {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.Span {
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.ButtonImage:hover {
+  opacity: 0.7;
+}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 훅
 import config from "../config";
-import "../Style/legister.css"
+import styles from "../Style/Register.module.css"; // CSS Module import
+
 export default function Register() {
   const navigate = useNavigate(); // 페이지이동 userNavigate()
 
@@ -121,19 +122,19 @@ export default function Register() {
   };
 
   return (
-    <div className="Register_Container">
-      <div className="Main_container">
-        <div className="Main_image">
-          <img src="/image/RegisterImage.jpg" alt="Background" className="RegisterImage" />
-          <img src="/image/Vector9.png" alt="Overlay" className="RegisterImage_Vector" />
+    <div className={styles.Register_Container}>
+      <div className={styles.Main_container}>
+        <div className={styles.Main_image}>
+          <img src="/image/RegisterImage.jpg" alt="Background" className={styles.RegisterImage} />
+          <img src="/image/Vector9.png" alt="Overlay" className={styles.RegisterImage_Vector} />
         </div>
       </div>
-      <h2 className="Register_Title">SIGN UP</h2>
-      <form className="form" onSubmit={handleSubmit}>
+      <h2 className={styles.Register_Title}>SIGN UP</h2>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div>
-          <label className="USERID">UserId:</label>
+          <label className={styles.USERID}>UserId:</label>
           <input
-            className="input_text"
+            className={styles.input_text}
             type="text"
             name="userid"
             value={userInfo.userid}
@@ -142,9 +143,9 @@ export default function Register() {
           />
         </div>
         <div>
-          <label className="PASSWORD">Password:</label>
+          <label className={styles.PASSWORD}>Password:</label>
           <input
-            className="input_text"
+            className={styles.input_text}
             type="password"
             name="password"
             value={userInfo.password}
@@ -153,9 +154,9 @@ export default function Register() {
           />
         </div>
         <div>
-          <label className="EMAIL">Email:</label>
+          <label className={styles.EMAIL}>Email:</label>
           <input
-            className="input_text"
+            className={styles.input_text}
             type="email"
             name="email"
             value={userInfo.email}
@@ -164,8 +165,8 @@ export default function Register() {
           />
         </div>
         <div>
-          <label className="SEXUAL_SELECTION">SEXUAL SELECTION</label>
-          <div className="gender-selection">
+          <label className={styles.SEXUAL_SELECTION}>SEXUAL SELECTION</label>
+          <div className={styles.genderSelection}>
             <label>
               <input
                 type="radio"
@@ -191,21 +192,21 @@ export default function Register() {
           </div>
         </div>
         <div>
-          <label className="PROVINCE">Province:</label>
-          <input className="input_text" type="text" name="region1" value={userInfo.region1} readOnly />
+          <label className={styles.PROVINCE}>Province:</label>
+          <input className={styles.input_text} type="text" name="region1" value={userInfo.region1} readOnly />
         </div>
         <div>
-          <label className="CITY">City:
-          <button className="CITY_Button" type="button" onClick={handleAddressSearch}>
-            주소 검색
-          </button>
+          <label className={styles.CITY}>City:
+            <button className={styles.CITY_Button} type="button" onClick={handleAddressSearch}>
+              주소 검색
+            </button>
           </label>
-          <input className="input_text" type="text" name="region2" value={userInfo.region2} readOnly />
+          <input className={styles.input_text} type="text" name="region2" value={userInfo.region2} readOnly />
         </div>
         <div>
-          <label className="BIRTH">Birth:</label>
+          <label className={styles.BIRTH}>Birth:</label>
           <input
-            className="input_text"
+            className={styles.input_text}
             type="date"
             name="birth"
             value={userInfo.birth}
@@ -215,7 +216,7 @@ export default function Register() {
             required
           />
         </div>
-        <button className="Register_Button" type="submit">회원가입</button>
+        <button className={styles.Register_Button} type="submit">회원가입</button>
       </form>
     </div>
   );

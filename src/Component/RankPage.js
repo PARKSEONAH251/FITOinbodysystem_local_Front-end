@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import config from "../config";
 import { useNavigate } from "react-router-dom";
-import "../Style/rankpage.css";
+import styles from "../Style/rankpage.module.css";
 
 export default function RankPage() {
   const [maleRank, setMaleRank] = useState([]);
@@ -13,19 +13,35 @@ export default function RankPage() {
 
   // 🐶 강아지 & 🐱 고양이 이미지 리스트 (Imgur에서 직접 이미지 링크 사용)
   const dogImages = [
-    "/image/rankimage/귀여운 하양 아이폰 강아지.jpg",
-    "/image/rankimage/빤히_보는_강아지.jpg",
-    "/image/rankimage/햄썸한_강아지.jpg",
-    "/image/rankimage/작업하는_강아지.jpg",
-    "/image/rankimage/안경쓴_강아지.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_002701861_06.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_002701861_09.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_002701861_10.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_01.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_02.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_03.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_04.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_05.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_06.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_07.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_08.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_09.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799_10.jpg",
+    "/image/rankimage/bog/KakaoTalk_20250316_003826799.jpg",
   ];
 
   const catImages = [
-    "/image/rankimage/모자_쓴_고양이.jpg",
-    "/image/rankimage/느낌_있는_고양이.jpg",
-    "/image/rankimage/노트북_보는_고양이.jpg",
-    "/image/rankimage/깜짝_놀란_고양이.jpg",
-    "/image/rankimage/그냥_고양이.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002701861_03.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002701861_05.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_01.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_02.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_03.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_04.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935_05.jpg",
+    "/image/rankimage/KakaoTalk_20250316_002901935.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004049803.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004146870_02.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004146870_03.jpg",
+    "/image/rankimage/KakaoTalk_20250316_004146870.jpg",
   ];
 
   const navigate = useNavigate();
@@ -36,7 +52,7 @@ export default function RankPage() {
 
   // 로그아웃 처리
   const handleLogout = async () => {
-    await fetch(`http://${config.SERVER_URL}/login/logout`, {
+    await fetch(`http://${config.SERVER_URL}/request/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -62,7 +78,7 @@ export default function RankPage() {
 
   useEffect(() => {
     // 남성 랭킹 조회
-    fetch(`http://${config.SERVER_URL}/userinfo/scorerankmale`, {
+    fetch(`http://${config.SERVER_URL}/userinfobody/scorerankmale`, {
       method: "GET",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -72,7 +88,7 @@ export default function RankPage() {
       .catch((error) => setError(error));
 
     // 여성 랭킹 조회
-    fetch(`http://${config.SERVER_URL}/userinfo/scorerankfemale`, {
+    fetch(`http://${config.SERVER_URL}/userinfobody/scorerankfemale`, {
       method: "GET",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -89,73 +105,84 @@ export default function RankPage() {
   const rankings = selectedGender === "male" ? maleRank : femaleRank;
 
   return (
-    <div className="Main_Container">
-        <a className="RecordBodyTitle">FitEnd</a>
-        <img src="/image/black.png" alt="Background" className="MainImage" />
-        <a className="RecordBodyMainTitle">Ranking</a>
+    <div className={styles.Main_Container}>
+        <a className={styles.RecordBodyTitle}>FitEnd</a>
+        <img src="/image/backgroundImage/Rectangle23.png" alt="Background" className={styles.MainImage} />
+        <img src="/image/backgroundImage/별배경.png" alt="star" className={styles.backgroundstar}/>
+        <img src="/image/backgroundImage/프레임4.png" alt="Frame4" className={styles.backgroundFrame4}/>
+        <img src="/image/backgroundImage/프레임3.png" alt="Frame3" className={styles.backgroundFrame3}/>
+        <img src="/image/backgroundImage/프레임5.png" alt="Frame5" className={styles.backgroundFrame5}/>
+        <a className={styles.RecordBodyMainTitle}>     {selectedGender} Ranking </a>
+        
+
+         {/* 🚀 **남자/여자 랭킹 버튼** */}
+         <div className={styles.gender_buttons}>
+          <button 
+            className={`styles.gender_btn ${selectedGender === "male" ? "active" : ""}`} 
+            onClick={() => handleGenderSelection("male")}
+          >
+          <a className={styles.genderbtn_title}>male</a>
+          </button>
+          <button 
+            className={`styles.gender_btn ${selectedGender === "female" ? "active" : ""}`} 
+            onClick={() => handleGenderSelection("female")}
+          >
+          <a className={styles.genderbtn_title}>female</a>
+          </button>
+
+        </div>
         {/* 🚀 **1~3등의 랜덤 프로필 이미지** */}
-        <div className="top-rank-container">
+        <div className={styles.top_rank_container}>
           {[1, 0, 2].map((rank, index) => (
-            <div key={rank} className={`rank-profile rank-${rank + 1}`}>
+            <div key={rank} className={`${styles.rank_profile} ${styles[`rank_${rank + 1}`]}`}>
               <img 
                 src={(rankings[rank] && rankings[rank].profileImage) ? rankings[rank].profileImage : randomImages[index] || "/image/default_img.jpg"} 
-                className="profile-image"
+                className={styles.profile_image}
                 alt={`Rank ${rank + 1}`}
               />
-              <p className="rank-name">{rankings[rank] ? rankings[rank].userid : "Unknown"}</p>
+              <p className={styles.rank_name}>{rankings[rank] ? rankings[rank].userid : "Unknown"}</p>
             </div>
           ))}
         </div>
 
 
-        {/* 🚀 **남자/여자 랭킹 버튼** */}
-        <div className="gender-buttons">
-          <button 
-            className={`gender-btn ${selectedGender === "male" ? "active" : ""}`} 
-            onClick={() => handleGenderSelection("male")}
-          >
-            MAN
-          </button>
-          <button 
-            className={`gender-btn ${selectedGender === "female" ? "active" : ""}`} 
-            onClick={() => handleGenderSelection("female")}
-          >
-            WOMAN
-          </button>
+       
+        <div className={styles.ranking_list} style={{ maxHeight: "400px", overflowY: "auto" }}>
+          {rankings.slice(0, 10).map((user, index) => {
+              // console.log("User Data:", user); // 데이터 확인
+              return (
+                <div key={index} className={styles.ranking_item}>
+                  <span className={styles.rank_position}>{index + 1}.</span> &nbsp;&nbsp;
+                  <span className={styles.user_id}>{user.userid}</span>
+                  <span className={styles.user_score}>POINT: {user.inbodyScore}</span>
+                </div>
+              );
+            })}
         </div>
-        <div className="ranking_list">
-          {rankings.slice(0, 10).map((user, index) => (
-            <div key={index} className="ranking-item">            
-              <span className="rank-position">{index + 1}.</span> &nbsp;&nbsp;
-              <span className="user-id">{user.userid}</span>
-              <span className="user-score">점수: {user.score}</span>
-            </div>
-        ))}
-        </div>
-        <div className="Button-Container">
-          <div className="Button-Item">
-            <img src="/image/HOME.png" alt="Main" className="ButtonImage" onClick={navigateMain} />
-            <span className="Span">Main</span>         
+        <div className={styles.Button_Container}>
+          <div className={styles.Button_Item}>
+            <img src="/image/HOME.png" alt="Main" className={styles.ButtonImage} onClick={navigateMain} />
+            <span className={styles.span}>Main</span>         
           </div>
 
-          <div className="Button-Item">
-            <img src="/image/PAPAR.png" alt="Paper" className="ButtonImage" onClick={navigateToRecordBody} />
-            <span className="Span">Paper</span>
+          <div className={styles.Button_Item}>
+            <img src="/image/PAPAR.png" alt="Paper" className={styles.ButtonImage} onClick={navigateToRecordBody} />
+            <span className={styles.span}>Paper</span>
           </div>
 
-          <div className="Button-Item">
-            <img src="/image/Vector7.png" alt="Graph" className="ButtonImage" onClick={navigateGraph} />
-            <span className="Span">Graph</span>
+          <div className={styles.Button_Item}>
+            <img src="/image/Vector7.png" alt="Graph" className={styles.ButtonImage} onClick={navigateGraph} />
+            <span className={styles.span}>Graph</span>
           </div>
 
-          <div className="Button-Item">
-            <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
-            <span className="Span">Food</span>
+          <div className={styles.Button_Item}>
+            <img src="/image/Vector8.png" alt="Food" className={styles.ButtonImage} onClick={navigateFood}/>
+            <span className={styles.span}>Food</span>
           </div>
 
-          <div className="Button-Item">
-            <img src="/image/PEOPLE.png" alt="Logout" className="ButtonImage" onClick={handleLogout} />
-            <span className="Span">Logout</span>
+          <div className={styles.Button_Item}>
+            <img src="/image/PEOPLE.png" alt="Logout" className={styles.ButtonImage} onClick={handleLogout} />
+            <span className={styles.span}>Logout</span>
           </div>
         </div>
     </div>
