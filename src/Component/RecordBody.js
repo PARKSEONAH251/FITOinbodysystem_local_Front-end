@@ -18,7 +18,7 @@ export default function RecordBody() {
 
   const navigateMain = () => {navigate("/main");};
   const navigateToRecordBody = () => {navigate("/recodbody");};
-  const navigateFood=() => {navigate("/FoodSearchR");};
+  const navigateFood=() => {navigate("/MealTimingselect");};
   const navigateGraph = () => {navigate("/Graph")};
 
   // 로그아웃 처리

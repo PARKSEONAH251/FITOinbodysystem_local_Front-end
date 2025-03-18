@@ -7,10 +7,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 50px auto;
+  margin: 60px auto;
   background: transparent;
   padding: 20px;
-  margin-top: 200px;
+  margin-top: 20%;
   overflow: visible; /* Allow scrollable content */
   border-radius: 10px;
 }
@@ -40,9 +40,7 @@
   margin-bottom: 20px;
 }
 
-.Central-Menu {
-  margin-top: 75px;
-}
+  
 .anime_container{
   width: 100%;
   max-width: 800px;
@@ -128,3 +126,4 @@
 .ButtonImage:hover {
   opacity: 0.7;
 }
+
