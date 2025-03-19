@@ -135,7 +135,7 @@ export default function MealTimingselect() {
                       <span className="meal-calories moning">
                           🔥 총 칼로리: {
                               mealData.filter(record => record.dietMemo === "moning" && formatDate(new Date(record.timestamp)) === selectedDateFormatted)
-                              .reduce((sum, record) => sum + record.calories, 0)
+                              .reduce((sum, record) => sum + record.enerc, 0)
                           } kcal
                       </span>
                   ) : (
@@ -150,7 +150,7 @@ export default function MealTimingselect() {
                       <span className="meal-calories lunch">
                           🔥 총 칼로리: {
                               mealData.filter(record => record.dietMemo === "lunch" && formatDate(new Date(record.timestamp)) === selectedDateFormatted)
-                              .reduce((sum, record) => sum + record.calories, 0)
+                              .reduce((sum, record) => sum + record.enerc, 0)
                           } kcal
                       </span>
                   ) : (
@@ -165,7 +165,7 @@ export default function MealTimingselect() {
                       <span className="meal-calories dinner">
                           🔥 총 칼로리: {
                               mealData.filter(record => record.dietMemo === "dinner" && formatDate(new Date(record.timestamp)) === selectedDateFormatted)
-                              .reduce((sum, record) => sum + record.calories, 0)
+                              .reduce((sum, record) => sum + record.enerc, 0)
                           } kcal
                       </span>
                   ) : (
@@ -180,7 +180,7 @@ export default function MealTimingselect() {
                       <span className="meal-calories dessert">
                           🔥 총 칼로리: {
                               mealData.filter(record => record.dietMemo === "desset" && formatDate(new Date(record.timestamp)) === selectedDateFormatted)
-                              .reduce((sum, record) => sum + record.calories, 0)
+                              .reduce((sum, record) => sum + record.enerc, 0)
                           } kcal
                       </span>
                   ) : (
