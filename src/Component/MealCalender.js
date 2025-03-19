@@ -20,7 +20,7 @@ const MealCalendar = ({ mealData = [] }) => { // ✅ mealData 기본값을 빈 �
 
   const navigateToRecordBody = () => {navigate("/recodbody");};
 
-  const navigateFood=() => {navigate("/MealTimingselect");};
+  const navigateFood= () => {navigate("/MealTimingselect");};
 
   const navigateGraph = () => {navigate("/Graph")};
 
@@ -158,6 +158,9 @@ const MealCalendar = ({ mealData = [] }) => { // ✅ mealData 기본값을 빈 �
             ) : (
               <p className="no-record-text">기록 없음</p>
             )}
+            <button className="eat" onClick={navigateFood}>
+              <span className="eat_yellow_button">What'd you have today?</span>
+            </button>
           </div>
         )}
 
