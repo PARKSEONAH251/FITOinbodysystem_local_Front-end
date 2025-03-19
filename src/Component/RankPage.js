@@ -50,7 +50,7 @@ export default function RankPage() {
   const navigate = useNavigate();
   const navigateMain = () => navigate("/main");
   const navigateToRecordBody = () => navigate("/recodbody");
-  const navigateFood = () => navigate("/FoodSearchR");
+  const navigateCalender = () => {navigate("/Calender")};
   const navigateGraph = () => navigate("/Graph");
 
   // 로그아웃 처리
@@ -172,7 +172,7 @@ export default function RankPage() {
           </div>
 
           <div className="Button-Item">
-            <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
+            <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateCalender}/>
             <span className="Span">Food</span>
           </div>
 
