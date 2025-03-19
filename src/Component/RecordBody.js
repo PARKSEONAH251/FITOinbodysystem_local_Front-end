@@ -18,7 +18,7 @@ export default function RecordBody() {
 
   const navigateMain = () => {navigate("/main");};
   const navigateToRecordBody = () => {navigate("/recodbody");};
-  const navigateFood=() => {navigate("/MealTimingselect");};
+  const navigateCalender = () => {navigate("/Calender")};
   const navigateGraph = () => {navigate("/Graph")};
 
   // 로그아웃 처리
@@ -136,7 +136,7 @@ export default function RecordBody() {
           </div>
 
           <div className="Button-Item">
-            <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateFood}/>
+            <img src="/image/Vector8.png" alt="Food" className="ButtonImage" onClick={navigateCalender}/>
             <span className="Span">Food</span>
           </div>
 
