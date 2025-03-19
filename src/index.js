@@ -13,6 +13,7 @@ import TodoCalender from "./Component/TodoCalender";
 import ClickThis from "./Component/ClickThis";
 import FoodSearchR from "./Component/FoodSearchR";
 import MealTimingselect from "./Component/MealTimingselect";
+import MealCalender from "./Component/MealCalender";
 const App = () => {
   return (
     <Router>
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/graph" element={<Graph />} />
         <Route path="/FoodSearchR" element={<FoodSearchR />} />
         <Route path="/MealTimingselect" element={<MealTimingselect/>}/>
+        <Route path="/Calender" element={<MealCalender/>}/>
       </Routes>
     </Router>
   );

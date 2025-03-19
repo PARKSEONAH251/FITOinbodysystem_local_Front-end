@@ -9,7 +9,7 @@ export default function MealTimingselect() {
     const [userid, setUserid] = useState("");
     const [selectedDate, setSelectedDate] = useState(new Date()); // 선택한 날짜 상태
     const [mealData, setMealData] = useState([]); // 식사 데이터 저장
-    const [availableDates, setAvailableDates] = useState([]); // 기록이 있는 날짜 목록
+    // const [availableDates, setAvailableDates] = useState([]); // 기록이 있는 날짜 목록
     const mealTypes = ["moning", "lunch", "dinner", "dessert"]; // 아침, 점심, 저녁
 
     // 📅 날짜 포맷 변환 함수 (한국 시간 기준)
@@ -31,7 +31,7 @@ export default function MealTimingselect() {
 
     const navigatetodo = () => {navigate("/Todo")};
 
-    const navigateCalender = () => {navigate("/todo")}
+    const navigateCalender = () => {navigate("/Calender")};
 
     const handleLogout = async () => {
         await fetch(`http://${config.SERVER_URL}/login/logout`, {
@@ -71,16 +71,9 @@ export default function MealTimingselect() {
                 .then((data) => {
                     console.log("📊 받은 데이터:", data);
                   setMealData(data);
-          
-                  // 기록이 있는 날짜 목록 만들기 (중복 제거 후 최신순 정렬)
-                  const dates = [...new Set(data.map((record) => formatDate(new Date(record.timestamp))))].sort(
-                    (a, b) => new Date(b) - new Date(a)
-                  );
-          
-                //   console.log("🗓️ 기록이 있는 날짜:", dates);
-                  setAvailableDates(dates);
-                  setSelectedDate(dates[0] ? new Date(dates[0]) : new Date()); // 최신 날짜 선택 (없으면 오늘)
-                })
+                //   console.log("meal data " , mealData);
+                }
+            )
                 .catch((error) => {
                   console.warn("⚠️ 인증 실패 또는 데이터 불러오기 실패:", error);
                   navigate("/login");
