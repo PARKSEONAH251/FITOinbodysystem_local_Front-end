@@ -150,7 +150,7 @@
   /* 선택된 날짜 정보 박스 */
 .selected-date-container {
     width: 300px;
-    height: 70px;
+    height: 90px;
     margin-top: 16px;
     padding: 12px;
     border-radius: 10px;
@@ -159,34 +159,60 @@
   }
   
   /* 선택된 날짜 텍스트 */
-  .selected-date-text {
+.selected-date-text {
+  position: absolute;
+  top: 71%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e7e7e7;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  width: 100%;
+}
+
+/* 식사 데이터 텍스트 */
+.meal-data-text {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  font-weight: bold;
+  color: #e7e7e7;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* 칼로리 데이터 텍스트 */
+.calorie-data-text {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  color: #e7e7e7;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* 기록 없음 메시지 */
+.no-record-text {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #e7e7e7;
+  font-style: italic;
+  font-size: 13px;
+  text-align: center;
+  width: 100%;
+}
+  
+  .eat{
     position: absolute;
-    margin-top: 10px;
-    color: #e7e7e7;
-    font-weight: bold;
-    font-size: 13px;
+    bottom: 18%;
+    left: 25%;
+    width: 210px;
+    height: 25px;
+    background-color: transparent;
+    border-radius: 10px;
+    border-bottom: 1px solid #C9F439;
+    color: #C9F439;
   }
-  
-  /* 식사 데이터 텍스트 */
-  .meal-data-text {
-    font-weight: bold;
-    color: #e7e7e7;
-    margin-top: 8px;
-  }
-  
-  /* 칼로리 데이터 텍스트 */
-  .calorie-data-text {
-    color: #e7e7e7;
-    font-weight: bold;
-    margin-top: 5px;
-  }
-  
-  /* 기록 없음 메시지 */
-  .no-record-text {
-    position: absolute;
-    color: #e7e7e7;
-    font-style: italic;
-    font-size: 13;
-    margin-top: 33px;
-  }
-  
