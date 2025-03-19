@@ -180,14 +180,13 @@ const MealCalendar = ({ mealData = [] }) => { // ✅ mealData 기본값을 빈 �
         {selectedDate && (
             <div className={styles.selected_date_container}>
               <p className={styles.selected_date_text}>{year}년 {month}월 {selectedDate}일 선택됨</p>
-
               {/* 🔥 Debugging logs */}
-              {console.log("밀레코드:", mealRecords)}
-              {console.log("체킹 데이트 키:", `${year}-${month.toString().padStart(2, "0")}-${selectedDate.toString().padStart(2, "0")}`)}
+              {/* {console.log("밀레코드:", mealRecords)}
+              {console.log("체킹 데이트 키:", `${year}-${month.toString().padStart(2, "0")}-${selectedDate.toString().padStart(2, "0")}`)} */}
 
               {/* 🔥 해당 날짜에 데이터가 존재하는지 확인 */}
               {mealRecords[`${year}-${month.toString().padStart(2, "0")}-${selectedDate.toString().padStart(2, "0")}`] ? (
-                <div>
+                <div className={styles.meal_data_container}>
                   <p className={styles.meal_data_text}>
                     {mealRecords[`${year}-${month.toString().padStart(2, "0")}-${selectedDate.toString().padStart(2, "0")}`].meal.join(", ")}
                   </p>

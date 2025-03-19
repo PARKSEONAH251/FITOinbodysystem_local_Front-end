@@ -90,7 +90,7 @@ export default function FoodSearchR() {
 
       <div className={styles.food_container}>
         <h2>날짜: {date}</h2>
-        <h2>식사 유형: {mealType === "breakfast" ? "아침" : mealType === "Lunch" ? "점심" : "저녁"}</h2>
+        <h2>식사 유형: {mealType === "breakfast" ? "아침" : mealType === "lunch" ? "점심" : mealType === "dinner" ? "저녁" : "간식"}</h2>
 
         <h2>음식 검색</h2>
         <input

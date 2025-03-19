@@ -150,7 +150,7 @@
   /* 선택된 날짜 정보 박스 */
 .selected_date_container {
     width: 300px;
-    height: 70px;
+    height: 100px;
     margin-top: 16px;
     padding: 12px;
     border-radius: 10px;
@@ -161,17 +161,23 @@
   /* 선택된 날짜 텍스트 */
   .selected_date_text {
     position: absolute;
-    margin-top: 10px;
+    margin-top: 0px;
     color: #e7e7e7;
     font-weight: bold;
     font-size: 13px;
   }
-  
+  .meal_data_container{
+    top: 92%;
+    left: 48.5%;
+    transform: translate(-50%, -160%);
+    position: absolute;
+    text-align: center; 
+  }
   /* 식사 데이터 텍스트 */
   .meal_data_text {
     font-weight: bold;
     color: #e7e7e7;
-    margin-top: 8px;
+    margin-top: 15px;
   }
   
   /* 칼로리 데이터 텍스트 */
